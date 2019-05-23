@@ -34,6 +34,7 @@ namespace ModelDonnees.Mapping
 
             Property(p => p.DateNaissance)
                 .HasColumnName("EMP_DATENAISSANCE")
+                .HasColumnType("datetime2")
                 .IsOptional();
 
             Property(p => p.Anciennete)

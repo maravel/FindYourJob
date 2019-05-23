@@ -48,8 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IService.cs" />
+    <Compile Include="Result.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeRetour.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModelDonnees\ModelDonnees.csproj">

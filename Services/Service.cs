@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace Services
 {
+    /// <summary>
+    /// Service de gestion des données relatives à l'application
+    /// </summary>
     public class Service
     {
         private ContextDA DbContext { get; set; }
@@ -21,6 +24,11 @@ namespace Services
 
         #region Employés
         
+        /// <summary>
+        /// Obtient une liste d'employés selon les critères
+        /// </summary>
+        /// <param name="id">Critère identifiant</param>
+        /// <returns>Liste d'employés</returns>
         public async Task<List<Employe>> GetEmployes(int? id = null)
         {
             try
@@ -35,7 +43,78 @@ namespace Services
             {
                 throw;
             }
+        }
 
+        /// <summary>
+        /// Crée ou modifie un employé
+        /// </summary>
+        /// <param name="employe">L'employé</param>
+        /// <param name="isNew">Valeur à true si création, false si modification</param>
+        /// <returns>Un <see cref="Result"/> avec le type de retour</returns>
+        public async Task<Result> AddUpdateEmploye(Employe employe, bool isNew)
+        {
+            try
+            {
+                Employe entity = await DbContext.Employes.Where(e => e.Id == employe.Id).SingleOrDefaultAsync();
+
+                if(isNew && entity == null)
+                {
+                    entity = employe;
+                    DbContext.Employes.Add(entity);
+                }
+                else if(!isNew && entity != null)
+                {
+                    entity.Nom = employe.Nom;
+                    entity.Prenom = employe.Prenom;
+                    entity.Anciennete = employe.Anciennete;
+                    entity.Biographie = employe.Biographie;
+                    entity.DateNaissance = employe.DateNaissance;
+                }
+                else
+                {
+                    if(isNew)
+                    {
+                        return new Result(TypeRetour.Error, "Employé déjà existant.");
+                    }
+
+                    return new Result(TypeRetour.Error, "Employé non trouvé.");
+                }
+
+                await DbContext.SaveChangesAsync();
+
+                return new Result(TypeRetour.Success);
+            }
+            catch (Exception ex)
+            {
+                return new Result(TypeRetour.Error, ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Supprime un employé à partir de son identifiant
+        /// </summary>
+        /// <param name="id">Identifiant de l'employé à supprimer</param>
+        /// <returns>Un <see cref="Result"/> avec le type de retour</returns>
+        public async Task<Result> RemoveEmploye(int id)
+        {
+            try
+            {
+                Employe entity = await DbContext.Employes.Where(e => e.Id == id).SingleOrDefaultAsync();
+
+                if(entity == null)
+                {
+                    return new Result(TypeRetour.Error, "Employé non trouvé.");
+                }
+
+                DbContext.Employes.Remove(entity);
+                await DbContext.SaveChangesAsync();
+
+                return new Result(TypeRetour.Success);
+            }
+            catch (Exception ex)
+            {
+                return new Result(TypeRetour.Error, ex.Message);
+            }
         }
 
         #endregion
