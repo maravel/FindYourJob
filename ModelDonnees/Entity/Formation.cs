@@ -22,6 +22,6 @@ namespace ModelDonnees.Entity
         public int EmployeId { get; set; }
 
         /// <summary>L'<see cref="Employe"/> participant à la formation</summary>
-        public Employe Emmploye { get; set; }
+        public Employe Employe { get; set; }
     }
 }
