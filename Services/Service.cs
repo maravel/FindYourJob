@@ -21,14 +21,13 @@ namespace Services
             DbContext = new ContextDA();
         }
 
-
         #region Employés
         
         /// <summary>
         /// Obtient une liste d'employés selon les critères
         /// </summary>
         /// <param name="id">Critère identifiant</param>
-        /// <returns>Liste d'employés</returns>
+        /// <returns>Liste d'<see cref="Employe"/></returns>
         public async Task<List<Employe>> GetEmployes(int? id = null)
         {
             try
@@ -121,6 +120,11 @@ namespace Services
 
         #region Offres
 
+        /// <summary>
+        /// Obtient une liste d'offres selon les critères
+        /// </summary>
+        /// <param name="id">Critère identifiant</param>
+        /// <returns>Liste d'<see cref="Offre"/></returns>
         public async Task<List<Offre>> GetOffres(int? id = null)
         {
             try
@@ -138,9 +142,14 @@ namespace Services
         }
 
         #endregion
-        
-        #region Offre
 
+        #region Formations
+
+        /// <summary>
+        /// Obtient une liste de formation selon les critères
+        /// </summary>
+        /// <param name="id">Critère identifiant</param>
+        /// <returns>Liste de <see cref="Formation"/></returns>
         public async Task<List<Formation>> GetFormations(int? id = null)
         {
             try
@@ -159,9 +168,14 @@ namespace Services
         }
 
         #endregion
-        
-        #region Postulation
 
+        #region Postulations
+
+        /// <summary>
+        /// Obtient une liste de postulations selon les critères
+        /// </summary>
+        /// <param name="id">Critère identifiant</param>
+        /// <returns>Liste de <see cref="Postulation"/></returns>
         public async Task<List<Postulation>> GetPostulations(int? employeId = null, int? offreId = null)
         {
             try
@@ -183,6 +197,11 @@ namespace Services
 
         #region Statuts
 
+        /// <summary>
+        /// Obtient une liste de statuts selon les critères
+        /// </summary>
+        /// <param name="id">Critère identifiant</param>
+        /// <returns>Liste de <see cref="Statut"/></returns>
         public async Task<List<Statut>> GetStatuts(int? id = null)
         {
             try
@@ -204,7 +223,11 @@ namespace Services
 
         #region Experiences
 
-
+        /// <summary>
+        /// Obtient une liste de expériences selon les critères
+        /// </summary>
+        /// <param name="id">Critère identifiant</param>
+        /// <returns>Liste de <see cref="Experience"/></returns>
         public async Task<List<Experience>> GetExperiences(int? id = null)
         {
             try
@@ -222,6 +245,12 @@ namespace Services
             }
         }
 
+        /// <summary>
+        /// Crée ou modifie une expérience
+        /// </summary>
+        /// <param name="exp">L'expérience</param>
+        /// <param name="isNew">Valeur à true si création, false si modification</param>
+        /// <returns>Un <see cref="Result"/> avec le type de retour</returns>
         public async Task<Result> AddUpdateExperience(Experience exp, bool isNew)
         {
             try
@@ -257,6 +286,11 @@ namespace Services
             }
         }
 
+        /// <summary>
+        /// Supprime une expérience à partir de son identifiant
+        /// </summary>
+        /// <param name="id">Identifiant de l'expérience à supprimer</param>
+        /// <returns>Un <see cref="Result"/> avec le type de retour</returns>
         public async Task<Result> RemoveExperience(int id)
         {
             try
@@ -280,7 +314,6 @@ namespace Services
         }
 
         #endregion
-
 
     }
 }
