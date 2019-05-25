@@ -15,7 +15,7 @@ namespace TestUnitaire
         [TestMethod]
         public async Task TestCreationEmployeAsync()
         {
-            Service service = new Service();
+            IService service = new Service();
 
             // Arrange
             string nom = "Employe";
@@ -40,7 +40,7 @@ namespace TestUnitaire
         [TestMethod]
         public async Task TestAddExperienceAsync()
         {
-            Service service = new Service();
+            IService service = new Service();
 
             // Arrange
             string nomEmploye = "Mathieu";

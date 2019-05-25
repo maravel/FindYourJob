@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPF"
+        xmlns:my="clr-namespace:WPF.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -15,21 +15,7 @@
             <RowDefinition Height="2*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <Button>Button 1</Button>
-        <Button Grid.Column="1">Button 2</Button>
-        <Button Grid.Column="2">Button 3</Button>
-        <Button Grid.Row="1">Button 4</Button>
-        <Button Grid.Column="1" Grid.Row="1">Button 5</Button>
-        <Button Grid.Column="2" Grid.Row="1">Button 6</Button>
-        <Button Grid.Row="2">Button 7</Button>
-        <Button Grid.Column="1" Grid.Row="2">Button 8</Button>
-        <Button Grid.Column="2" Grid.Row="2">Button 9</Button>
-        <ListView Grid.RowSpan="2">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+
+        <my:ListOffre DataContext="{Binding ListeOffreViewModel}" Grid.ColumnSpan="2" Grid.Column="0"></my:ListOffre>
     </Grid>
 </Window>
