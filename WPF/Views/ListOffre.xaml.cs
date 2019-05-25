@@ -12,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WPF.ViewModels;
 
-namespace WPF
+namespace WPF.Views
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Logique d'interaction pour ListOffre.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ListOffre : UserControl
     {
-        public MainWindow()
+        public ListOffre()
         {
             InitializeComponent();
-            this.DataContext = new HomeViewModel();
         }
     }
 }

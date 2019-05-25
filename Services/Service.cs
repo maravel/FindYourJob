@@ -12,7 +12,7 @@ namespace Services
     /// <summary>
     /// Service de gestion des données relatives à l'application
     /// </summary>
-    public class Service
+    public class Service : IService
     {
         private ContextDA DbContext { get; set; }
 
