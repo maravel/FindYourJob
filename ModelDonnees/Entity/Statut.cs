@@ -15,7 +15,7 @@ namespace ModelDonnees.Entity
         /// <summary>Libellé d'un statut</summary>
         public string Libelle { get; set; }
 
-        /// <summary>Offres</summary>
+        /// <summary>Liste d'<see cref="Offre"/> possèdant le statut</summary>
         public List<Offre> Offres { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace TestUnitaire
     public class ServiceTest
     {
         [TestMethod]
-        public async Task TestCreationEmployeAsync()
+        public async Task TestAddEmployeAsync()
         {
             IService service = new Service();
 
