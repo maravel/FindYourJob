@@ -46,26 +46,36 @@ namespace TestUnitaire
         [TestMethod]
         public async Task TestAddOffreAsync()
         {
-            Service service = new Service();
+            IService service = new Service();
 
             // Arrange
-            string nom = "Offre";
-            Offre offreTest = new Offre
+            string libelle = "Statut";
+            string intitule = "intitule";
+
+            Statut s = new Statut
             {
-                Intitule = nom
+                Libelle = libelle
             };
 
-            List<Offre> offres = await service.GetOffres();
-            int nb = offres.Count;
+            await service.AddUpdateStatut(s, true);
+            List<Statut> es = await service.GetStatuts();
+            int id = es.Where(statut => statut.Libelle == libelle).FirstOrDefault().Id;
+
+            Offre offreTest = new Offre
+            {
+                Intitule = intitule,
+                StatutId = id
+            };
 
             // Act
             Result res = await service.AddUpdateOffre(offreTest, true);
-            offres = await service.GetOffres();
+
+            List<Offre> offres = await service.GetOffres();
+            int nb = offres.Where(ex => ex.Intitule == intitule).Count();
 
             // Assert
+            Assert.IsTrue(nb >= 1);
             Assert.IsFalse(res.HasError());
-            Assert.AreEqual(nb, offres.Count - 1);
-
         }
 
         #endregion
@@ -78,32 +88,124 @@ namespace TestUnitaire
             IService service = new Service();
 
             // Arrange
-            string intitule = "Formation";
-            Formation formationTest = new Formation
+            string nomEmploye = "Mathieu";
+            string intitule = "exp 2 ans";
+
+            Employe e = new Employe
             {
-                Intitule = intitule
+                Nom = nomEmploye
             };
 
-            List<Formation> formations = await service.GetFormations();
-            int nb = formations.Count;
+            await service.AddUpdateEmploye(e, true);
+            List<Employe> es = await service.GetEmployes();
+            int id = es.Where(employe => employe.Nom == nomEmploye).FirstOrDefault().Id;
+
+            Formation formationTest = new Formation
+            {
+                Intitule = intitule,
+                EmployeId = id
+            };
 
             // Act
             Result res = await service.AddUpdateFormation(formationTest, true);
-            formations = await service.GetFormations();
+
+            List<Formation> formations = await service.GetFormations();
+            int nb = formations.Where(ex => ex.Intitule == intitule).Count();
 
             // Assert
+            Assert.IsTrue(nb >= 1);
             Assert.IsFalse(res.HasError());
-            Assert.AreEqual(nb, formations.Count - 1);
-
         }
 
         #endregion
 
         #region Postulations
 
+        [TestMethod]
+        public async Task TestAddPostulationAsync()
+        {
+            IService service = new Service();
+
+            // Arrange
+            string libelle = "Statut";
+            int statut = 0;
+            string nomEmploye = "Mathieu";
+            string intitule = "Offre";
+
+            Employe e = new Employe
+            {
+                Nom = nomEmploye
+            };
+
+            await service.AddUpdateEmploye(e, true);
+            List<Employe> es = await service.GetEmployes();
+            int employeId = es.Where(employe => employe.Nom == nomEmploye).FirstOrDefault().Id;
+
+            Statut s = new Statut
+            {
+                Libelle = libelle
+            };
+
+            await service.AddUpdateStatut(s, true);
+            List<Statut> ss = await service.GetStatuts();
+            int statutId = ss.Where(sa => sa.Libelle == libelle).FirstOrDefault().Id;
+
+            Offre o = new Offre
+            {
+                Intitule = intitule,
+                StatutId = statutId
+            };
+
+            await service.AddUpdateOffre(o, true);
+            List<Offre> os = await service.GetOffres();
+            int offreId = os.Where(sa => sa.Intitule == intitule).FirstOrDefault().Id;
+
+            Postulation postulationTest = new Postulation
+            {
+                Statut = statut,
+                OffreId = offreId,
+                EmployeId = employeId
+            };
+
+            // Act
+            Result res = await service.AddUpdatePostulation(postulationTest, true);
+
+            List<Postulation> postulations = await service.GetPostulations();
+            int nb = postulations.Where(p => p.Statut == statut).Count();
+
+            // Assert
+            Assert.IsTrue(nb >= 1);
+            Assert.IsFalse(res.HasError());
+        }
+
         #endregion
 
         #region Statuts
+
+        [TestMethod]
+        public async Task TestAddStatutAsync()
+        {
+            Service service = new Service();
+
+            // Arrange
+            string libelle = "Statut";
+            Statut statutTest = new Statut
+            {
+                Libelle = libelle
+            };
+
+            List<Statut> statuts = await service.GetStatuts();
+            int nb = statuts.Count;
+
+            // Act
+            Result res = await service.AddUpdateStatut(statutTest, true);
+            statuts = await service.GetStatuts();
+
+            // Assert
+            Assert.IsFalse(res.HasError());
+            Assert.AreEqual(nb, statuts.Count - 1);
+
+        }
 
         #endregion
 
@@ -135,7 +237,7 @@ namespace TestUnitaire
 
             // Act
             Result res = await service.AddUpdateExperience(exp, true);
-            es = await service.GetEmployes();
+
             List<Experience> exps = await service.GetExperiences();
             int nb = exps.Where(ex => ex.Intitule == intitule).Count();
             
