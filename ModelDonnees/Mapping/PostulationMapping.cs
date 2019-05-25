@@ -29,6 +29,7 @@ namespace ModelDonnees.Mapping
 
             Property(p => p.Date)
                 .HasColumnName("POS_DATE")
+                .HasColumnType("datetime2")
                 .IsOptional();
 
             Property(p => p.Statut)

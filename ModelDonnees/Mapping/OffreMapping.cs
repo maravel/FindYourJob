@@ -31,6 +31,7 @@ namespace ModelDonnees.Mapping
 
             Property(p => p.Date)
                 .HasColumnName("OFF_DATE")
+                .HasColumnType("datetime2")
                 .IsOptional();
 
             Property(p => p.Salaire)

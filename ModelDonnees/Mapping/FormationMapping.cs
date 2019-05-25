@@ -30,6 +30,7 @@ namespace ModelDonnees.Mapping
 
             Property(p => p.Date)
                 .HasColumnName("FOR_DATE")
+                .HasColumnType("datetime2")
                 .IsOptional();
 
             Property(p => p.EmployeId)

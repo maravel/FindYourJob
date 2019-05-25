@@ -222,8 +222,65 @@ namespace Services
             }
         }
 
+        public async Task<Result> AddUpdateExperience(Experience exp, bool isNew)
+        {
+            try
+            {
+                Experience entity = await DbContext.Experiences.Where(e => e.Id == exp.Id).SingleOrDefaultAsync();
+
+                if (isNew && entity == null)
+                {
+                    entity = exp;
+                    DbContext.Experiences.Add(entity);
+                }
+                else if (!isNew && entity != null)
+                {
+                    entity.Intitule = exp.Intitule;
+                }
+                else
+                {
+                    if (isNew)
+                    {
+                        return new Result(TypeRetour.Error, "Expérience déjà existant.");
+                    }
+
+                    return new Result(TypeRetour.Error, "Expérience non trouvé.");
+                }
+
+                await DbContext.SaveChangesAsync();
+
+                return new Result(TypeRetour.Success);
+            }
+            catch (Exception ex)
+            {
+                return new Result(TypeRetour.Error, ex.Message);
+            }
+        }
+
+        public async Task<Result> RemoveExperience(int id)
+        {
+            try
+            {
+                Experience entity = await DbContext.Experiences.Where(e => e.Id == id).SingleOrDefaultAsync();
+
+                if (entity == null)
+                {
+                    return new Result(TypeRetour.Error, "Expérience non trouvé.");
+                }
+
+                DbContext.Experiences.Remove(entity);
+                await DbContext.SaveChangesAsync();
+
+                return new Result(TypeRetour.Success);
+            }
+            catch (Exception ex)
+            {
+                return new Result(TypeRetour.Error, ex.Message);
+            }
+        }
+
         #endregion
-        
+
 
     }
 }

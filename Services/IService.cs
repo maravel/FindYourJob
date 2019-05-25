@@ -67,6 +67,8 @@ namespace Services
 
         Task<List<Experience>> GetExperiences(int? id = null);
 
+        Task<Result> AddUpdateExperience(Experience ex, bool isNew);
+
         #endregion
 
     }
