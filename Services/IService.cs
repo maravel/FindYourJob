@@ -119,7 +119,7 @@ namespace Services
 
         #endregion
 
-        #region Status
+        #region Statut
 
         /// <summary>
         /// Obtient une liste de statuts selon les critères

@@ -12,6 +12,8 @@ namespace TestUnitaire
     [TestClass]
     public class ServiceTest
     {
+        #region Employés
+
         [TestMethod]
         public async Task TestAddEmployeAsync()
         {
@@ -36,7 +38,77 @@ namespace TestUnitaire
             Assert.AreEqual(nb, employes.Count - 1);
 
         }
-        
+
+        #endregion
+
+        #region Offres
+
+        [TestMethod]
+        public async Task TestAddOffreAsync()
+        {
+            Service service = new Service();
+
+            // Arrange
+            string nom = "Offre";
+            Offre offreTest = new Offre
+            {
+                Intitule = nom
+            };
+
+            List<Offre> offres = await service.GetOffres();
+            int nb = offres.Count;
+
+            // Act
+            Result res = await service.AddUpdateOffre(offreTest, true);
+            offres = await service.GetOffres();
+
+            // Assert
+            Assert.IsFalse(res.HasError());
+            Assert.AreEqual(nb, offres.Count - 1);
+
+        }
+
+        #endregion
+
+        #region Formations
+
+        [TestMethod]
+        public async Task TestAddFormationAsync()
+        {
+            Service service = new Service();
+
+            // Arrange
+            string intitule = "Formation";
+            Formation formationTest = new Formation
+            {
+                Intitule = intitule
+            };
+
+            List<Formation> formations = await service.GetFormations();
+            int nb = formations.Count;
+
+            // Act
+            Result res = await service.AddUpdateFormation(formationTest, true);
+            formations = await service.GetFormations();
+
+            // Assert
+            Assert.IsFalse(res.HasError());
+            Assert.AreEqual(nb, formations.Count - 1);
+
+        }
+
+        #endregion
+
+        #region Postulations
+
+        #endregion
+
+        #region Statuts
+
+        #endregion
+
+        #region Expériences
+
         [TestMethod]
         public async Task TestAddExperienceAsync()
         {
@@ -71,5 +143,8 @@ namespace TestUnitaire
             Assert.IsTrue(nb >= 1);
             Assert.IsFalse(res.HasError());
         }
+
+        #endregion
+
     }
 }
