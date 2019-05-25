@@ -30,15 +30,15 @@ namespace WPF.ViewModels
             service = new Service();
 
             _offres = new ObservableCollection<DetailOffreViewModel>();
-            
-            List<Offre> offres = new List<Offre>()
+
+            List<Offre> offres = new List<Offre>();
+
+            Task t = Task.Run(async () =>
             {
-                new Offre(){ Intitule = "Offre test 1"},
-                new Offre(){ Intitule = "Offre test 2"}
-            };
-            //Task.Run(async () => {
-            //    offres = await service.GetOffres();
-            //});
+                offres = await service.GetOffres();
+            });
+            
+            t.Wait();
 
             foreach (Offre o in offres)
             {

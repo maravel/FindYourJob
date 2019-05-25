@@ -133,7 +133,6 @@ namespace Services
                 {
                     return await DbContext.Offres.Where(o => o.Id == id.Value).ToListAsync();
                 }
-
                 return await DbContext.Offres.ToListAsync();
             }
             catch (Exception)

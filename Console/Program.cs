@@ -1,4 +1,5 @@
 ﻿using ModelDonnees;
+using ModelDonnees.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,17 @@ namespace Console
         static void Main(string[] args)
         {
             ContextDA context = new ContextDA();
+            try
+            {
+                List<Offre> offres = context.Offres.ToList();
+            }
+            catch (Exception ex)
+            {
 
-            context.Employes.ToList();
+                throw;
+            }
+            
+            
         }
     }
 }

@@ -37,7 +37,7 @@ namespace ModelDonnees.Mapping
                 .HasColumnName("EMP_ID")
                 .IsRequired();
 
-            HasRequired(p => p.Emmploye).WithMany(e => e.Formations).HasForeignKey(f => f.EmployeId);
+            HasRequired(p => p.Employe).WithMany(e => e.Formations).HasForeignKey(f => f.EmployeId);
         }
     }
 }

@@ -75,7 +75,7 @@ namespace TestUnitaire
         [TestMethod]
         public async Task TestAddFormationAsync()
         {
-            Service service = new Service();
+            IService service = new Service();
 
             // Arrange
             string intitule = "Formation";
