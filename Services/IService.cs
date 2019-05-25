@@ -126,7 +126,7 @@ namespace Services
         /// </summary>
         /// <param name="id">Critère identifiant</param>
         /// <returns>Liste de statuts</returns>
-        Task<List<Statut>> GetStatut(int? id = null);
+        Task<List<Statut>> GetStatuts(int? id = null);
 
         /// <summary>
         /// Crée ou modifie un statut
@@ -152,7 +152,7 @@ namespace Services
         /// </summary>
         /// <param name="id">Critère identifiant</param>
         /// <returns>Liste d'expériences</returns>
-        Task<List<Statut>> GetExperience(int? id = null);
+        Task<List<Experience>> GetExperiences(int? id = null);
 
         /// <summary>
         /// Crée ou modifie une expérience
@@ -160,7 +160,7 @@ namespace Services
         /// <param name="exp">L'expérience</param>
         /// <param name="isNew">Valeur à true si création, false si modification</param>
         /// <returns>Un <see cref="Result"/> avec le type de retour</returns>
-        Task<Result> AddUpdateExperience(Statut exp, bool isNew);
+        Task<Result> AddUpdateExperience(Experience exp, bool isNew);
 
         /// <summary>
         /// Supprime une expérience à partir de son identifiant
