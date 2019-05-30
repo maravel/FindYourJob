@@ -17,7 +17,7 @@ namespace Console
             {
                 List<Offre> offres = context.Offres.ToList();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
                 throw;

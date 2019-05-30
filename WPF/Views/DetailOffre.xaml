@@ -10,22 +10,28 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="35"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="35"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" HorizontalAlignment="Stretch" Background="AliceBlue" FontWeight="Bold">FICHE PRODUIT</Label>
+        <Label Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" HorizontalAlignment="Stretch" Background="CadetBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="19" FontWeight="Bold">Détail d'une offre</Label>
 
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Vertical">
-            <Label>Code du produit</Label>
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="3" Orientation="Vertical">
+            <Label>Intitulé</Label>
             <TextBox Text="{Binding Intitule}"></TextBox>
+            <Label>Date</Label>
+            <TextBox Text="{Binding Date}"></TextBox>
+            <Label>Salaire</Label>
+            <TextBox Text="{Binding Salaire}"></TextBox>
         </StackPanel>
+
+        <my:ListPostulant Grid.Row="3" Grid.ColumnSpan="2" DataContext="{Binding ListPostulantViewModel}"></my:ListPostulant>
+
+        <Button Width="40" Height="40" Margin="5" Grid.Row="2" Grid.Column="2" Background="Blue" FontSize="25px" Command="{Binding AjouterOffre}">+</Button>
 
     </Grid>
 </UserControl>

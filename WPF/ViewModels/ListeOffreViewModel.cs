@@ -40,6 +40,9 @@ namespace WPF.ViewModels
             
             t.Wait();
 
+            // on trie les offres par date (la plus récente en premier)
+            offres = offres.OrderByDescending(o => o.Date).ToList();
+
             foreach (Offre o in offres)
             {
                 _offres.Add(new DetailOffreViewModel(o));

@@ -329,6 +329,14 @@ namespace Services
                 {
                     return await DbContext.Postulations.Where(p => p.EmployeId == employeId.Value && p.OffreId == offreId.Value).ToListAsync();
                 }
+                else if(employeId.HasValue)
+                {
+                    return await DbContext.Postulations.Where(p => p.EmployeId == employeId.Value).ToListAsync();
+                }
+                else if(offreId.HasValue)
+                {
+                    return await DbContext.Postulations.Where(p => p.OffreId == offreId.Value).ToListAsync();
+                }
 
                 return await DbContext.Postulations.ToListAsync();
             }

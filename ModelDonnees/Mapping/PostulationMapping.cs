@@ -32,10 +32,13 @@ namespace ModelDonnees.Mapping
                 .HasColumnType("datetime2")
                 .IsOptional();
 
-            Property(p => p.Statut)
-                .HasColumnName("POS_STATUT")
+            Property(p => p.StatutId)
+                .HasColumnName("POS_STATUT_ID")
                 .IsOptional();
 
+            HasRequired(p => p.Employe).WithMany(e => e.Postulations).HasForeignKey(f => f.EmployeId);
+
+            HasRequired(p => p.Statut).WithMany(e => e.Postulations).HasForeignKey(f => f.StatutId);
         }
     }
 }

@@ -63,14 +63,23 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModels\Common\BaseViewModel.cs" />
+    <Compile Include="ViewModels\Common\RelayCommand.cs" />
     <Compile Include="ViewModels\DetailOffreViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\AjoutOffreViewModel.cs" />
+    <Compile Include="ViewModels\ListPostulantViewModel.cs" />
     <Compile Include="ViewModels\ListeOffreViewModel.cs" />
+    <Compile Include="Views\AjouterOffre.xaml.cs">
+      <DependentUpon>AjouterOffre.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DetailOffre.xaml.cs">
       <DependentUpon>DetailOffre.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ListOffre.xaml.cs">
       <DependentUpon>ListOffre.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListPostulant.xaml.cs">
+      <DependentUpon>ListPostulant.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -84,11 +93,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AjouterOffre.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DetailOffre.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ListOffre.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ListPostulant.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

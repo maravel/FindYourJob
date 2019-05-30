@@ -162,7 +162,7 @@ namespace TestUnitaire
 
             Postulation postulationTest = new Postulation
             {
-                Statut = statut,
+                StatutId = statutId,
                 OffreId = offreId,
                 EmployeId = employeId
             };
@@ -171,7 +171,7 @@ namespace TestUnitaire
             Result res = await service.AddUpdatePostulation(postulationTest, true);
 
             List<Postulation> postulations = await service.GetPostulations();
-            int nb = postulations.Where(p => p.Statut == statut).Count();
+            int nb = postulations.Where(p => p.StatutId == statut).Count();
 
             // Assert
             Assert.IsTrue(nb >= 1);

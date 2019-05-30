@@ -32,5 +32,8 @@ namespace ModelDonnees.Entity
 
         /// <summary>Liste des <see cref="Formation"/> de l'employé</summary>
         public List<Formation> Formations { get; set; }
+
+        /// <summary>Liste des <see cref="Postulation"/> de l'employé</summary>
+        public List<Postulation> Postulations { get; set; }
     }
 }

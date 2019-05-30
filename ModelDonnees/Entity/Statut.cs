@@ -17,5 +17,8 @@ namespace ModelDonnees.Entity
 
         /// <summary>Liste d'<see cref="Offre"/> possèdant le statut</summary>
         public List<Offre> Offres { get; set; }
+
+        /// <summary>Liste d'<see cref="Postulation"/> possèdant le statut</summary>
+        public List<Postulation> Postulations { get; set; }
     }
 }

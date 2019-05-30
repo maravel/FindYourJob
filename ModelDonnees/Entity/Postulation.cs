@@ -15,11 +15,25 @@ namespace ModelDonnees.Entity
         /// <summary>L'id d'un <see cref="Employe"/> (primary key)</summary>
         public int EmployeId { get; set; }
 
+        /// <summary>L'<see cref="Employe"/> concerné</summary>
+        public Employe Employe { get; set; }
+
         /// <summary>Date de la postulation</summary>
         public DateTime Date { get; set; }
 
+        /// <summary>Identitidant du statut de la postulation</summary>
+        public int StatutId { get; set; }
+
         /// <summary>Statut de la postulation</summary>
-        public int Statut { get; set; }
-        
+        public Statut Statut { get; set; }
+
+        /// <summary>Nom et prénom du postulant</summary>
+        public string NomPrenomPostulant
+        {
+            get
+            {
+                return $"{Employe?.Nom} {Employe?.Prenom}";
+            }
+        }
     }
 }
