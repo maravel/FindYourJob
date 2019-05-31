@@ -6,6 +6,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 using WPF.ViewModels.Common;
 
 namespace WPF.ViewModels
@@ -15,6 +17,9 @@ namespace WPF.ViewModels
         #region Variables
         
         private IService service;
+        private RelayCommand _createOperation;
+        public Action CloseAction { get; set; }
+        private string _intitule;
 
         #endregion
 
@@ -34,7 +39,44 @@ namespace WPF.ViewModels
 
         #region Data Bindings
 
-        
+        /// <summary>
+        /// Intitulé d'une offre
+        /// </summary>
+        public string IntituleCreate
+        {
+            get { return _intitule; }
+            set
+            {
+                _intitule = value;
+                OnPropertyChanged("IntituleCreate");
+            }
+        }
+
+        #endregion
+
+        #region Commandes
+
+        /// <summary>
+        /// Commande pour créer une offre
+        /// </summary>
+        public ICommand CreateOffre
+        {
+            get
+            {
+                if (_createOperation == null)
+                    _createOperation = new RelayCommand(() => this.CloseWindowAddOffer());
+                return _createOperation;
+            }
+        }
+
+        /// <summary>
+        /// Permet l'ouverture de la fenêtre
+        /// </summary>
+        private void CloseWindowAddOffer()
+        {
+            Console.WriteLine("create");
+        }
+
         #endregion
     }
 }

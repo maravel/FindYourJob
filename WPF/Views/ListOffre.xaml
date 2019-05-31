@@ -21,8 +21,8 @@
         <ListView Grid.Column="0"  Grid.Row="0" Grid.RowSpan="3" Margin="5px" ItemsSource="{Binding Offres, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedOffre, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="150px" Header="Intitule" DisplayMemberBinding="{Binding Intitule}" />
-                    <GridViewColumn Width="100px" Header="Date" DisplayMemberBinding="{Binding Date}" />
+                    <GridViewColumn Width="Auto" Header="Intitule" DisplayMemberBinding="{Binding Intitule}" />
+                    <GridViewColumn Width="100px" Header="Date" DisplayMemberBinding="{Binding Date, StringFormat='dd/MM/yyyy'}" />
                 </GridView>
             </ListView.View>
         </ListView>

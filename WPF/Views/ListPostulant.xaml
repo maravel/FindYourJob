@@ -11,7 +11,7 @@
             <GridView>
                 <GridViewColumn Width="150px" Header="Intitule" DisplayMemberBinding="{Binding Path=EmployeId}" />
                 <GridViewColumn Width="150px" Header="Intitule" DisplayMemberBinding="{Binding Path=NomPrenomPostulant}" />
-                <GridViewColumn Width="100px" Header="Date" DisplayMemberBinding="{Binding Path=Date}" />
+                <GridViewColumn Width="100px" Header="Date" DisplayMemberBinding="{Binding Path=Date, StringFormat='dd/MM/yyyy'}" />
             </GridView>
         </ListView.View>
     </ListView>

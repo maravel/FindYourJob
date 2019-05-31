@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Input;
 using WPF.ViewModels.Common;
 
@@ -19,10 +20,13 @@ namespace WPF.ViewModels
         private DateTime _date;
         private double _salaire;
         private string _description;
-        private string _statut;
         private string _responsable;
         private RelayCommand _addOperation;
+
         private ListPostulantViewModel _listePostulantViewModel = null;
+
+        private int _statut;
+        private CollectionView _statuts;
 
         #endregion
 
@@ -39,9 +43,17 @@ namespace WPF.ViewModels
             _date = offre.Date;
             _description = offre.Description;
             _salaire = offre.Salaire;
-            _statut = offre.Statut?.Libelle;
             _responsable = offre.Responsable;
             _listePostulantViewModel = new ListPostulantViewModel(offre.Id);
+            _statut = offre.StatutId;
+
+            Task t = Task.Run(async () =>
+            {
+                IList<Statut> listeStatuts = await service.GetStatuts();
+                _statuts = new CollectionView(listeStatuts);
+            });
+
+            t.Wait();
         }
 
         #endregion
@@ -93,10 +105,22 @@ namespace WPF.ViewModels
         /// <summary>
         /// Statut de l'offre
         /// </summary>
-        public string Statut
+        public int Statut
         {
             get { return _statut; }
-            set { _statut = value; }
+            set {
+                if (_statut == value) return;
+                _statut = value;
+                OnPropertyChanged("Statut");
+            }
+        }
+
+        /// <summary>
+        /// Statut de l'offre
+        /// </summary>
+        public CollectionView Statuts
+        {
+            get { return new CollectionView(_statuts); }
         }
 
         /// <summary>
@@ -145,8 +169,6 @@ namespace WPF.ViewModels
         }
 
         #endregion
-
-
-
+        
     }
 }
