@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Servic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF", "WPF\WPF.csproj", "{5123FA37-B395-41A7-B65B-F3EB6E2B1585}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceWebWCF", "ServiceWebWCF\ServiceWebWCF.csproj", "{8346B8CD-A820-429F-83A5-BECDA9957709}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dto", "Dto\Dto.csproj", "{497D5014-EDD5-433D-BDF7-AE857B6AFB18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{5123FA37-B395-41A7-B65B-F3EB6E2B1585}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5123FA37-B395-41A7-B65B-F3EB6E2B1585}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5123FA37-B395-41A7-B65B-F3EB6E2B1585}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8346B8CD-A820-429F-83A5-BECDA9957709}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8346B8CD-A820-429F-83A5-BECDA9957709}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8346B8CD-A820-429F-83A5-BECDA9957709}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8346B8CD-A820-429F-83A5-BECDA9957709}.Release|Any CPU.Build.0 = Release|Any CPU
+		{497D5014-EDD5-433D-BDF7-AE857B6AFB18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{497D5014-EDD5-433D-BDF7-AE857B6AFB18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{497D5014-EDD5-433D-BDF7-AE857B6AFB18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{497D5014-EDD5-433D-BDF7-AE857B6AFB18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,7 @@
-﻿using ModelDonnees;
+﻿using Dto.Dto;
+using ModelDonnees;
 using ModelDonnees.Entity;
+using Services.Converter;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -125,15 +127,15 @@ namespace Services
         /// </summary>
         /// <param name="id">Critère identifiant</param>
         /// <returns>Liste d'<see cref="Offre"/></returns>
-        public async Task<List<Offre>> GetOffres(int? id = null)
+        public async Task<List<OffreDto>> GetOffres(int? id = null)
         {
             try
             {
                 if (id.HasValue)
                 {
-                    return await DbContext.Offres.Where(o => o.Id == id.Value).ToListAsync();
+                    return OffreConverter.ConvertToDto(await DbContext.Offres.Where(o => o.Id == id.Value).ToListAsync());
                 }
-                return await DbContext.Offres.ToListAsync();
+                return OffreConverter.ConvertToDto(await DbContext.Offres.ToListAsync());
             }
             catch (Exception)
             {

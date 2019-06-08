@@ -144,6 +144,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Dto\Dto.csproj">
+      <Project>{497D5014-EDD5-433D-BDF7-AE857B6AFB18}</Project>
+      <Name>Dto</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ModelDonnees\ModelDonnees.csproj">
       <Project>{5aa9523a-dca8-4d1b-8118-44828375a1b5}</Project>
       <Name>ModelDonnees</Name>

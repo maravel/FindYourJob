@@ -1,4 +1,5 @@
-﻿using ModelDonnees.Entity;
+﻿using Dto.Dto;
+using ModelDonnees.Entity;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -36,7 +37,7 @@ namespace WPF.ViewModels
         /// Constructeur par défaut
         /// <param name="p">Offre à transformer en DetailOffreViewModel</param>
         /// </summary>
-        public DetailOffreViewModel(Offre offre)
+        public DetailOffreViewModel(OffreDto offre)
         {
             service = new Service();
             _intitule = offre.Intitule;

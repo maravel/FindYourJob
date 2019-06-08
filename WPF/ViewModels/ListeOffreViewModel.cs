@@ -1,4 +1,5 @@
-﻿using ModelDonnees.Entity;
+﻿using Dto.Dto;
+using ModelDonnees.Entity;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,7 @@ namespace WPF.ViewModels
 
             _offres = new ObservableCollection<DetailOffreViewModel>();
 
-            List<Offre> offres = new List<Offre>();
+            List<OffreDto> offres = new List<OffreDto>();
 
             Task t = Task.Run(async () =>
             {
@@ -43,7 +44,7 @@ namespace WPF.ViewModels
             // on trie les offres par date (la plus récente en premier)
             offres = offres.OrderByDescending(o => o.Date).ToList();
 
-            foreach (Offre o in offres)
+            foreach (OffreDto o in offres)
             {
                 _offres.Add(new DetailOffreViewModel(o));
             }

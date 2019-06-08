@@ -1,4 +1,5 @@
-﻿using ModelDonnees.Entity;
+﻿using Dto.Dto;
+using ModelDonnees.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,7 +47,7 @@ namespace Services
         /// </summary>
         /// <param name="id">Critère identifiant</param>
         /// <returns>Liste d'offres</returns>
-        Task<List<Offre>> GetOffres(int? id = null);
+        Task<List<OffreDto>> GetOffres(int? id = null);
 
         /// <summary>
         /// Crée ou modifie une offre
