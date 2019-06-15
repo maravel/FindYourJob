@@ -44,6 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dto\OffreDto.cs" />
+    <Compile Include="Dto\ExperienceDto.cs" />
+    <Compile Include="Dto\FormationDto.cs" />
+    <Compile Include="Dto\PostulationDto.cs" />
+    <Compile Include="Dto\EmployeDto.cs" />
     <Compile Include="Dto\StatutDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
