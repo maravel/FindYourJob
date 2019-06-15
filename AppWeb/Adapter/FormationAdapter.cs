@@ -56,5 +56,50 @@ namespace AppWeb.Adapter
 
             return vm;
         }
+
+        /// <summary>
+        /// Convertit une liste de <see cref="FormationViewModel"/> en liste de <see cref="FormationDto"/>.
+        /// </summary>
+        /// <param name="vms">La liste de ViewModel.</param>
+        /// <returns>La liste de dto convertie.</returns>
+        internal static List<FormationDto> ConvertToDto(List<FormationViewModel> vms)
+        {
+            if (vms == null)
+            {
+                return null;
+            }
+
+            List<FormationDto> dtos = new List<FormationDto>();
+
+            foreach (var vm in vms)
+            {
+                dtos.Add(ConvertToDto(vm));
+            }
+
+            return dtos;
+        }
+
+        /// <summary>
+        /// Convertit un <see cref="FormationViewModel"/> en <see cref="FormationDto"/>.
+        /// </summary>
+        /// <param name="vm">Le ViewModel à convertir.</param>
+        /// <returns>Le dto convertit</returns>
+        internal static FormationDto ConvertToDto(FormationViewModel vm)
+        {
+            if (vm == null)
+            {
+                return null;
+            }
+
+            FormationDto dto = new FormationDto
+            {
+                Date = vm.Date,
+                EmployeId = vm.EmployeId,
+                Id = vm.Id,
+                Intitule = vm.Intitule
+            };
+
+            return dto;
+        }
     }
 }

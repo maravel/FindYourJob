@@ -59,5 +59,53 @@ namespace AppWeb.Adapter
 
             return vm;
         }
+
+        /// <summary>
+        /// Convertit une liste de <see cref="OffreViewModel"/> en liste de <see cref="OffreDto"/>.
+        /// </summary>
+        /// <param name="vms">La liste de ViewModel.</param>
+        /// <returns>La liste de dto convertie.</returns>
+        internal static List<OffreDto> ConvertToDto(List<OffreViewModel> vms)
+        {
+            if (vms == null)
+            {
+                return null;
+            }
+
+            List<OffreDto> dtos = new List<OffreDto>();
+
+            foreach (var vm in vms)
+            {
+                dtos.Add(ConvertToDto(vm));
+            }
+
+            return dtos;
+        }
+
+        /// <summary>
+        /// Convertit un <see cref="OffreViewModel"/> en <see cref="OffreDto"/>.
+        /// </summary>
+        /// <param name="vm">Le ViewModel à convertir.</param>
+        /// <returns>Le dto convertit</returns>
+        internal static OffreDto ConvertToDto(OffreViewModel vm)
+        {
+            if (vm == null)
+            {
+                return null;
+            }
+
+            OffreDto dto = new OffreDto
+            {
+                Date = vm.Date,
+                Description = vm.Description,
+                Id = vm.Id,
+                Intitule = vm.Intitule,
+                Responsable = vm.Responsable,
+                Salaire = vm.Salaire,
+                StatutId = vm.StatutId
+            };
+
+            return dto;
+        }
     }
 }

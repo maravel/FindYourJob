@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace Services.Converter
 {
-    internal class OffreConverter
+    internal class EmployeConverter
     {
 
-        internal static List<OffreDto> ConvertToDto(List<Offre> entities)
+        internal static List<EmployeDto> ConvertToDto(List<Employe> entities)
         {
             if(entities == null)
             {
                 return null;
             }
 
-            List<OffreDto> dtos = new List<OffreDto>();
+            List<EmployeDto> dtos = new List<EmployeDto>();
 
             foreach(var entity in entities)
             {
@@ -28,33 +28,32 @@ namespace Services.Converter
             return dtos;
         }
 
-        internal static OffreDto ConvertToDto(Offre entity)
+        internal static EmployeDto ConvertToDto(Employe entity)
         {
             if(entity == null)
             {
                 return null;
             }
 
-            OffreDto dto = new OffreDto();
+            EmployeDto dto = new EmployeDto();
             dto.Id = entity.Id;
-            dto.Intitule = entity.Intitule;
-            dto.Responsable = entity.Responsable;
-            dto.Salaire = entity.Salaire;
-            dto.StatutId = entity.StatutId;
-            dto.Description = entity.Description;
-            dto.Date = entity.Date;
+            dto.Anciennete = entity.Anciennete;
+            dto.Biographie = entity.Biographie;
+            dto.DateNaissance = entity.DateNaissance;
+            dto.Nom = entity.Nom;
+            dto.Prenom = entity.Prenom;
 
             return dto;
         }
 
-        internal static List<Offre> ConvertToEntity(List<OffreDto> dtos)
+        internal static List<Employe> ConvertToEntity(List<EmployeDto> dtos)
         {
             if (dtos == null)
             {
                 return null;
             }
 
-            List<Offre> entities = new List<Offre>();
+            List<Employe> entities = new List<Employe>();
 
             foreach (var dto in dtos)
             {
@@ -64,21 +63,20 @@ namespace Services.Converter
             return entities;
         }
 
-        internal static Offre ConvertToEntity(OffreDto dto)
+        internal static Employe ConvertToEntity(EmployeDto dto)
         {
             if (dto == null)
             {
                 return null;
             }
 
-            Offre entity = new Offre();
+            Employe entity = new Employe();
             entity.Id = dto.Id;
-            entity.Intitule = dto.Intitule;
-            entity.Responsable = dto.Responsable;
-            entity.Salaire = dto.Salaire;
-            entity.StatutId = dto.StatutId;
-            entity.Description = dto.Description;
-            entity.Date = dto.Date;
+            entity.Anciennete = dto.Anciennete;
+            entity.Biographie = dto.Biographie;
+            entity.DateNaissance = dto.DateNaissance;
+            entity.Nom = dto.Nom;
+            entity.Prenom = dto.Prenom;
 
             return entity;
         }

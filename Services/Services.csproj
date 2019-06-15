@@ -48,6 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converter\ExperienceConverter.cs" />
+    <Compile Include="Converter\FormationConverter.cs" />
+    <Compile Include="Converter\EmployeConverter.cs" />
+    <Compile Include="Converter\PostulationConverter.cs" />
+    <Compile Include="Converter\StatutConverter.cs" />
     <Compile Include="Converter\OffreConverter.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="Result.cs" />

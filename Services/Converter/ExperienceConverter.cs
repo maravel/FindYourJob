@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace Services.Converter
 {
-    internal class OffreConverter
+    internal class ExperienceConverter
     {
 
-        internal static List<OffreDto> ConvertToDto(List<Offre> entities)
+        internal static List<ExperienceDto> ConvertToDto(List<Experience> entities)
         {
             if(entities == null)
             {
                 return null;
             }
 
-            List<OffreDto> dtos = new List<OffreDto>();
+            List<ExperienceDto> dtos = new List<ExperienceDto>();
 
             foreach(var entity in entities)
             {
@@ -28,33 +28,30 @@ namespace Services.Converter
             return dtos;
         }
 
-        internal static OffreDto ConvertToDto(Offre entity)
+        internal static ExperienceDto ConvertToDto(Experience entity)
         {
             if(entity == null)
             {
                 return null;
             }
 
-            OffreDto dto = new OffreDto();
+            ExperienceDto dto = new ExperienceDto();
             dto.Id = entity.Id;
             dto.Intitule = entity.Intitule;
-            dto.Responsable = entity.Responsable;
-            dto.Salaire = entity.Salaire;
-            dto.StatutId = entity.StatutId;
-            dto.Description = entity.Description;
+            dto.EmployeId = entity.EmployeId;
             dto.Date = entity.Date;
 
             return dto;
         }
 
-        internal static List<Offre> ConvertToEntity(List<OffreDto> dtos)
+        internal static List<Experience> ConvertToEntity(List<ExperienceDto> dtos)
         {
             if (dtos == null)
             {
                 return null;
             }
 
-            List<Offre> entities = new List<Offre>();
+            List<Experience> entities = new List<Experience>();
 
             foreach (var dto in dtos)
             {
@@ -64,20 +61,17 @@ namespace Services.Converter
             return entities;
         }
 
-        internal static Offre ConvertToEntity(OffreDto dto)
+        internal static Experience ConvertToEntity(ExperienceDto dto)
         {
             if (dto == null)
             {
                 return null;
             }
 
-            Offre entity = new Offre();
+            Experience entity = new Experience();
             entity.Id = dto.Id;
             entity.Intitule = dto.Intitule;
-            entity.Responsable = dto.Responsable;
-            entity.Salaire = dto.Salaire;
-            entity.StatutId = dto.StatutId;
-            entity.Description = dto.Description;
+            entity.EmployeId = dto.EmployeId;
             entity.Date = dto.Date;
 
             return entity;

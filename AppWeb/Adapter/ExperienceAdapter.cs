@@ -56,5 +56,50 @@ namespace AppWeb.Adapter
 
             return vm;
         }
+
+        /// <summary>
+        /// Convertit une liste de <see cref="ExperienceViewModel"/> en liste de <see cref="ExperienceDto"/>.
+        /// </summary>
+        /// <param name="vms">La liste de ViewModel.</param>
+        /// <returns>La liste de dto convertie.</returns>
+        internal static List<ExperienceDto> ConvertToDto(List<ExperienceViewModel> vms)
+        {
+            if (vms == null)
+            {
+                return null;
+            }
+
+            List<ExperienceDto> dtos = new List<ExperienceDto>();
+
+            foreach (var vm in vms)
+            {
+                dtos.Add(ConvertToDto(vm));
+            }
+
+            return dtos;
+        }
+
+        /// <summary>
+        /// Convertit un <see cref="ExperienceViewModel"/> en <see cref="ExperienceDto"/>.
+        /// </summary>
+        /// <param name="vm">Le ViewModel à convertir.</param>
+        /// <returns>Le dto convertit</returns>
+        internal static ExperienceDto ConvertToDto(ExperienceViewModel vm)
+        {
+            if (vm == null)
+            {
+                return null;
+            }
+
+            ExperienceDto dto = new ExperienceDto
+            {
+                Date = vm.Date,
+                EmployeId = vm.EmployeId,
+                Id = vm.Id,
+                Intitule = vm.Intitule
+            };
+
+            return dto;
+        }
     }
 }
