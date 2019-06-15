@@ -8,9 +8,16 @@ using System.Threading.Tasks;
 
 namespace Services.Converter
 {
+    /// <summary>
+    /// Convertisseur de <see cref="Postulation"/> en <see cref="PostulationDto"/> et vice versa.
+    /// </summary>
     internal class PostulationConverter
     {
-
+        /// <summary>
+        /// Convertit une liste de <see cref="Postulation"/> en liste de <see cref="PostulationDto"/>.
+        /// </summary>
+        /// <param name="dtos">La liste de Dto.</param>
+        /// <returns>La liste d'entity convertie.</returns>
         internal static List<PostulationDto> ConvertToDto(List<Postulation> entities)
         {
             if(entities == null)
@@ -28,6 +35,11 @@ namespace Services.Converter
             return dtos;
         }
 
+        /// <summary>
+        /// Convertit un <see cref="Postulation"/> en <see cref="PostulationDto"/>.
+        /// </summary>
+        /// <param name="dto">Le dto à convertir.</param>
+        /// <returns>L'entity convertit</returns>
         internal static PostulationDto ConvertToDto(Postulation entity)
         {
             if(entity == null)
@@ -44,6 +56,11 @@ namespace Services.Converter
             return dto;
         }
 
+        /// <summary>
+        /// Convertit une liste de <see cref="PostulationDto"/> en liste de <see cref="Postulation"/>.
+        /// </summary>
+        /// <param name="vms">La liste de entity.</param>
+        /// <returns>La liste de dto convertie.</returns>
         internal static List<Postulation> ConvertToEntity(List<PostulationDto> dtos)
         {
             if (dtos == null)
@@ -61,6 +78,11 @@ namespace Services.Converter
             return entities;
         }
 
+        /// <summary>
+        /// Convertit un <see cref="PostulationDto"/> en <see cref="Postulation"/>.
+        /// </summary>
+        /// <param name="vm">L'entity à convertir.</param>
+        /// <returns>Le dto convertit</returns>
         internal static Postulation ConvertToEntity(PostulationDto dto)
         {
             if (dto == null)

@@ -8,9 +8,16 @@ using System.Threading.Tasks;
 
 namespace Services.Converter
 {
+    /// <summary>
+    /// Convertisseur de <see cref="Experience"/> en <see cref="ExperienceDto"/> et vice versa.
+    /// </summary>
     internal class ExperienceConverter
     {
-
+        /// <summary>
+        /// Convertit une liste de <see cref="Experience"/> en liste de <see cref="ExperienceDto"/>.
+        /// </summary>
+        /// <param name="dtos">La liste de Dto.</param>
+        /// <returns>La liste d'entity convertie.</returns>
         internal static List<ExperienceDto> ConvertToDto(List<Experience> entities)
         {
             if(entities == null)
@@ -28,6 +35,11 @@ namespace Services.Converter
             return dtos;
         }
 
+        /// <summary>
+        /// Convertit un <see cref="Experience"/> en <see cref="ExperienceDto"/>.
+        /// </summary>
+        /// <param name="dto">Le dto à convertir.</param>
+        /// <returns>L'entity convertit</returns>
         internal static ExperienceDto ConvertToDto(Experience entity)
         {
             if(entity == null)
@@ -44,6 +56,11 @@ namespace Services.Converter
             return dto;
         }
 
+        /// <summary>
+        /// Convertit une liste de <see cref="ExperienceDto"/> en liste de <see cref="Experience"/>.
+        /// </summary>
+        /// <param name="vms">La liste de entity.</param>
+        /// <returns>La liste de dto convertie.</returns>
         internal static List<Experience> ConvertToEntity(List<ExperienceDto> dtos)
         {
             if (dtos == null)
@@ -61,6 +78,11 @@ namespace Services.Converter
             return entities;
         }
 
+        /// <summary>
+        /// Convertit un <see cref="ExperienceDto"/> en <see cref="Experience"/>.
+        /// </summary>
+        /// <param name="vm">L'entity à convertir.</param>
+        /// <returns>Le dto convertit</returns>
         internal static Experience ConvertToEntity(ExperienceDto dto)
         {
             if (dto == null)

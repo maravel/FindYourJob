@@ -8,9 +8,16 @@ using System.Threading.Tasks;
 
 namespace Services.Converter
 {
+    /// <summary>
+    /// Convertisseur de <see cref="Offre"/> en <see cref="OffreDto"/> et vice versa.
+    /// </summary>
     internal class OffreConverter
     {
-
+        /// <summary>
+        /// Convertit une liste de <see cref="Offre"/> en liste de <see cref="OffreDto"/>.
+        /// </summary>
+        /// <param name="dtos">La liste de Dto.</param>
+        /// <returns>La liste d'entity convertie.</returns>
         internal static List<OffreDto> ConvertToDto(List<Offre> entities)
         {
             if(entities == null)
@@ -28,6 +35,11 @@ namespace Services.Converter
             return dtos;
         }
 
+        /// <summary>
+        /// Convertit un <see cref="Offre"/> en <see cref="OffreDto"/>.
+        /// </summary>
+        /// <param name="dto">Le dto à convertir.</param>
+        /// <returns>L'entity convertit</returns>
         internal static OffreDto ConvertToDto(Offre entity)
         {
             if(entity == null)
@@ -47,6 +59,11 @@ namespace Services.Converter
             return dto;
         }
 
+        /// <summary>
+        /// Convertit une liste de <see cref="OffreDto"/> en liste de <see cref="Offre"/>.
+        /// </summary>
+        /// <param name="vms">La liste de entity.</param>
+        /// <returns>La liste de dto convertie.</returns>
         internal static List<Offre> ConvertToEntity(List<OffreDto> dtos)
         {
             if (dtos == null)
@@ -64,6 +81,11 @@ namespace Services.Converter
             return entities;
         }
 
+        /// <summary>
+        /// Convertit un <see cref="OffreDto"/> en <see cref="Offre"/>.
+        /// </summary>
+        /// <param name="vm">L'entity à convertir.</param>
+        /// <returns>Le dto convertit</returns>
         internal static Offre ConvertToEntity(OffreDto dto)
         {
             if (dto == null)

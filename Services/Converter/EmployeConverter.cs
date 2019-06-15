@@ -8,9 +8,16 @@ using System.Threading.Tasks;
 
 namespace Services.Converter
 {
+    /// <summary>
+    /// Convertisseur de <see cref="Employe"/> en <see cref="EmployeDto"/> et vice versa.
+    /// </summary>
     internal class EmployeConverter
     {
-
+        /// <summary>
+        /// Convertit une liste de <see cref="Employe"/> en liste de <see cref="EmployeDto"/>.
+        /// </summary>
+        /// <param name="dtos">La liste de Dto.</param>
+        /// <returns>La liste d'entity convertie.</returns>
         internal static List<EmployeDto> ConvertToDto(List<Employe> entities)
         {
             if(entities == null)
@@ -28,6 +35,11 @@ namespace Services.Converter
             return dtos;
         }
 
+        /// <summary>
+        /// Convertit un <see cref="Employe"/> en <see cref="EmployeDto"/>.
+        /// </summary>
+        /// <param name="dto">Le dto à convertir.</param>
+        /// <returns>L'entity convertit</returns>
         internal static EmployeDto ConvertToDto(Employe entity)
         {
             if(entity == null)
@@ -46,6 +58,11 @@ namespace Services.Converter
             return dto;
         }
 
+        /// <summary>
+        /// Convertit une liste de <see cref="EmployeDto"/> en liste de <see cref="Employe"/>.
+        /// </summary>
+        /// <param name="vms">La liste de entity.</param>
+        /// <returns>La liste de dto convertie.</returns>
         internal static List<Employe> ConvertToEntity(List<EmployeDto> dtos)
         {
             if (dtos == null)
@@ -63,6 +80,11 @@ namespace Services.Converter
             return entities;
         }
 
+        /// <summary>
+        /// Convertit un <see cref="EmployeDto"/> en <see cref="Employe"/>.
+        /// </summary>
+        /// <param name="vm">L'entity à convertir.</param>
+        /// <returns>Le dto convertit</returns>
         internal static Employe ConvertToEntity(EmployeDto dto)
         {
             if (dto == null)
