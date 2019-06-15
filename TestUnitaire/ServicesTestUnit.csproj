@@ -63,6 +63,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Dto\Dto.csproj">
+      <Project>{497D5014-EDD5-433D-BDF7-AE857B6AFB18}</Project>
+      <Name>Dto</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ModelDonnees\ModelDonnees.csproj">
       <Project>{5AA9523A-DCA8-4D1B-8118-44828375A1B5}</Project>
       <Name>ModelDonnees</Name>

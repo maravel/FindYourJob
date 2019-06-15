@@ -1,0 +1,12 @@
+﻿@using AppWeb.Models
+
+@model List<OffreViewModel>
+
+
+
+<ul>
+    @foreach(var offre in Model)
+    {
+        <li>@offre.Intitule</li>
+    }
+</ul>

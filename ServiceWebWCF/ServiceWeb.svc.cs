@@ -36,26 +36,29 @@ namespace ServiceWebWCF
             return composite;
         }
 
-
+        /// <summary>
+        /// Retourne toutes les offres
+        /// </summary>
+        /// <returns>Une liste de toutes les offres</returns>
         public async Task<List<OffreDto>> GetOffresAsync()
         {
             try
             {
                 return await service.GetOffres();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-
                 throw;
             }
             
         }
 
-        public string HelloWorld()
-        {
-            return "HelloWorld";
-        }
-
+        /// <summary>
+        /// Postule pour un employe à une offre
+        /// </summary>
+        /// <param name="idEmploye">L'identifiant de l'employé</param>
+        /// <param name="idOffre">L'identifiant de l'offre</param>
+        /// <returns>Une chaine avec le message de retour.</returns>
         public async Task<string> PostulerAsync(int idEmploye, int idOffre)
         {
             try

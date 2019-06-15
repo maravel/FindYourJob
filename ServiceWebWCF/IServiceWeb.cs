@@ -28,14 +28,7 @@ namespace ServiceWebWCF
             RequestFormat = WebMessageFormat.Json,
             UriTemplate = "offres")]
         Task<List<OffreDto>> GetOffresAsync();
-
-        [OperationContract]
-        [WebInvoke(Method = "GET",
-            ResponseFormat = WebMessageFormat.Json,
-            RequestFormat = WebMessageFormat.Json,
-            UriTemplate = "hello")]
-        string HelloWorld();
-
+        
         [OperationContract]
         [WebInvoke(Method = "POST",
             ResponseFormat = WebMessageFormat.Json,

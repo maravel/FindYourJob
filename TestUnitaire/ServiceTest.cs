@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using ModelDonnees.Entity;
 using System.Linq;
+using Dto.Dto;
 
 namespace TestUnitaire
 {
@@ -70,7 +71,7 @@ namespace TestUnitaire
             // Act
             Result res = await service.AddUpdateOffre(offreTest, true);
 
-            List<Offre> offres = await service.GetOffres();
+            List<OffreDto> offres = await service.GetOffres();
             int nb = offres.Where(ex => ex.Intitule == intitule).Count();
 
             // Assert
@@ -157,7 +158,7 @@ namespace TestUnitaire
             };
 
             await service.AddUpdateOffre(o, true);
-            List<Offre> os = await service.GetOffres();
+            List<OffreDto> os = await service.GetOffres();
             int offreId = os.Where(sa => sa.Intitule == intitule).FirstOrDefault().Id;
 
             Postulation postulationTest = new Postulation

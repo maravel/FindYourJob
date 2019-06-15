@@ -1,33 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Dto.Dto
+namespace AppWeb.Models
 {
-    /// <summary>Dto représentant un statut</summary>
-    [DataContract]
-    public class PostulationDto
+    public class PostulationViewModel
     {
         /// <summary>L'id d'une <see cref="Offre"/> (primary key)</summary>
-        [DataMember]
         public int OffreId { get; set; }
 
         /// <summary>L'id d'un <see cref="Employe"/> (primary key)</summary>
-        [DataMember]
         public int EmployeId { get; set; }
-        
+
         /// <summary>Date de la postulation</summary>
-        [DataMember]
+        [Display(Name = "Date")]
         public DateTime Date { get; set; }
 
         /// <summary>Identitidant du statut de la postulation</summary>
-        [DataMember]
         public int StatutId { get; set; }
-        
-
-        
     }
 }
