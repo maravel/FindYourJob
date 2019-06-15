@@ -322,25 +322,25 @@ namespace Services
         /// Obtient une liste de postulations selon les critères
         /// </summary>
         /// <param name="id">Critère identifiant</param>
-        /// <returns>Liste de <see cref="Postulation"/></returns>
-        public async Task<List<Postulation>> GetPostulations(int? employeId = null, int? offreId = null)
+        /// <returns>Liste de <see cref="PostulationDto"/></returns>
+        public async Task<List<PostulationDto>> GetPostulations(int? employeId = null, int? offreId = null)
         {
             try
             {
                 if (employeId.HasValue && offreId.HasValue)
                 {
-                    return await DbContext.Postulations.Where(p => p.EmployeId == employeId.Value && p.OffreId == offreId.Value).ToListAsync();
+                    return PostulationConverter.ConvertToDto(await DbContext.Postulations.Where(p => p.EmployeId == employeId.Value && p.OffreId == offreId.Value).ToListAsync());
                 }
                 else if(employeId.HasValue)
                 {
-                    return await DbContext.Postulations.Where(p => p.EmployeId == employeId.Value).ToListAsync();
+                    return PostulationConverter.ConvertToDto(await DbContext.Postulations.Where(p => p.EmployeId == employeId.Value).ToListAsync());
                 }
                 else if(offreId.HasValue)
                 {
-                    return await DbContext.Postulations.Where(p => p.OffreId == offreId.Value).ToListAsync();
+                    return PostulationConverter.ConvertToDto(await DbContext.Postulations.Where(p => p.OffreId == offreId.Value).ToListAsync());
                 }
 
-                return await DbContext.Postulations.ToListAsync();
+                return PostulationConverter.ConvertToDto(await DbContext.Postulations.ToListAsync());
             }
             catch (Exception)
             {
@@ -354,7 +354,7 @@ namespace Services
         /// <param name="postulation">La postulation</param>
         /// <param name="isNew">Valeur à true si création, false si modification</param>
         /// <returns>Un <see cref="Result"/> avec le type de retour</returns>
-        public async Task<Result> AddUpdatePostulation(Postulation postulation, bool isNew)
+        public async Task<Result> AddUpdatePostulation(PostulationDto postulation, bool isNew)
         {
             try
             {
@@ -362,13 +362,12 @@ namespace Services
 
                 if (isNew && entity == null)
                 {
-                    entity = postulation;
+                    entity = PostulationConverter.ConvertToEntity(postulation);
                     DbContext.Postulations.Add(entity);
                 }
                 else if (!isNew && entity != null)
                 {
                     entity.Date = postulation.Date;
-                    entity.Statut = postulation.Statut;
                 }
                 else
                 {

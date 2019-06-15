@@ -2,6 +2,33 @@
 
 @model OffreViewModel
 
-@Model.Intitule
+<div>
 
-@Model.Description
+    @Model.Intitule
+
+    @Model.Description
+</div>
+
+
+<button type="button" onclick="postuler('@Model.Id')">Postuler</button>
+
+
+<script>
+
+    function postuler(id) {
+        $.ajax({
+            url: "@Url.Action("Postuler","Employe")",
+            type: "POST",
+            data: { idOffre: id },
+            success: function (data) {
+                if (data.error) {
+                    alert(data.message);
+                }
+                else {
+                    alert(data.message);
+                }
+            }
+        });
+    }
+
+</script>

@@ -101,7 +101,7 @@ namespace Services
         /// </summary>
         /// <param name="id">Critère identifiant</param>
         /// <returns>Liste de postulations</returns>
-        Task<List<Postulation>> GetPostulations(int? employeId = null, int? offreId = null);
+        Task<List<PostulationDto>> GetPostulations(int? employeId = null, int? offreId = null);
 
         /// <summary>
         /// Crée ou modifie une postulation
@@ -109,7 +109,7 @@ namespace Services
         /// <param name="postulation">La postulation</param>
         /// <param name="isNew">Valeur à true si création, false si modification</param>
         /// <returns>Un <see cref="Result"/> avec le type de retour</returns>
-        Task<Result> AddUpdatePostulation(Postulation employe, bool isNew);
+        Task<Result> AddUpdatePostulation(PostulationDto employe, bool isNew);
 
         /// <summary>
         /// Supprime un postulation à partir de son identifiant

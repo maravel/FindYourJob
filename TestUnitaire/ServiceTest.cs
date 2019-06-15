@@ -171,7 +171,7 @@ namespace TestUnitaire
             // Act
             Result res = await service.AddUpdatePostulation(postulationTest, true);
 
-            List<Postulation> postulations = await service.GetPostulations();
+            List<PostulationDto> postulations = await service.GetPostulations();
             int nb = postulations.Where(p => p.StatutId == statut).Count();
 
             // Assert

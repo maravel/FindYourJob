@@ -132,6 +132,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\EmployeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OffreController.cs" />
     <Compile Include="Global.asax.cs">
@@ -186,6 +187,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Offre\ListesOffres.cshtml" />
     <Content Include="Views\Offre\DetailOffre.cshtml" />
+    <Content Include="Views\Employe\ListesOffresPostulees.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -205,6 +207,10 @@
     <ProjectReference Include="..\Dto\Dto.csproj">
       <Project>{497D5014-EDD5-433D-BDF7-AE857B6AFB18}</Project>
       <Name>Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ModelDonnees\ModelDonnees.csproj">
+      <Project>{5AA9523A-DCA8-4D1B-8118-44828375A1B5}</Project>
+      <Name>ModelDonnees</Name>
     </ProjectReference>
     <ProjectReference Include="..\Services\Services.csproj">
       <Project>{C06A78EE-6F3D-4A32-996D-2F405DAD4CB2}</Project>

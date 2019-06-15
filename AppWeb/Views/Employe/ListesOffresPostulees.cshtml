@@ -1,0 +1,14 @@
+﻿@using AppWeb.Models
+
+@model List<OffreViewModel>
+
+
+<ul>
+    @foreach (var offre in Model)
+    {
+        <li>
+            @offre.Intitule
+            <a href="@Url.Action("DetailOffreAsync", "Offre", new { idOffre = offre.Id })">Detail</a>
+        </li>
+    }
+</ul>

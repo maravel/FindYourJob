@@ -24,9 +24,9 @@ namespace AppWeb.Controllers
             return View("ListesOffres", vms);
         }
 
-        public async Task<ActionResult> DetailOffreAsync(int idOffre)
+        public async Task<ActionResult> DetailOffreAsync(int id)
         {
-            List<OffreDto> offres = await service.GetOffres(id: idOffre);
+            List<OffreDto> offres = await service.GetOffres(id: id);
             
             OffreViewModel vm = OffreAdapter.ConvertToViewModel(offres.FirstOrDefault());
 
