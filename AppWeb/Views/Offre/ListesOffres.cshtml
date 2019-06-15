@@ -2,11 +2,18 @@
 
 @model List<OffreViewModel>
 
-
+<form action="@Url.Action("SearchOffre","Offre")">
+    @Html.TextBox("searchText")
+    <button>Rechercher</button>
+</form>
 
 <ul>
     @foreach(var offre in Model)
     {
         <li>@offre.Intitule</li>
+
+        <a href="@Url.Action("DetailOffreAsync", "Offre", new { idOffre = offre.Id })">Detail</a>
     }
 </ul>
+
+
