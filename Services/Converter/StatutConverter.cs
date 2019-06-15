@@ -8,9 +8,16 @@ using System.Threading.Tasks;
 
 namespace Services.Converter
 {
+    /// <summary>
+    /// Convertisseur de <see cref="Statut"/> en <see cref="StatutDto"/> et vice versa.
+    /// </summary>
     internal class StatutConverter
     {
-
+        /// <summary>
+        /// Convertit une liste de <see cref="Statut"/> en liste de <see cref="StatutDto"/>.
+        /// </summary>
+        /// <param name="dtos">La liste de Dto.</param>
+        /// <returns>La liste d'entity convertie.</returns>
         internal static List<StatutDto> ConvertToDto(List<Statut> entities)
         {
             if(entities == null)
@@ -28,6 +35,11 @@ namespace Services.Converter
             return dtos;
         }
 
+        /// <summary>
+        /// Convertit un <see cref="Statut"/> en <see cref="StatutDto"/>.
+        /// </summary>
+        /// <param name="dto">Le dto à convertir.</param>
+        /// <returns>L'entity convertit</returns>
         internal static StatutDto ConvertToDto(Statut entity)
         {
             if(entity == null)
@@ -42,6 +54,11 @@ namespace Services.Converter
             return dto;
         }
 
+        /// <summary>
+        /// Convertit une liste de <see cref="StatutDto"/> en liste de <see cref="Statut"/>.
+        /// </summary>
+        /// <param name="vms">La liste de entity.</param>
+        /// <returns>La liste de dto convertie.</returns>
         internal static List<Statut> ConvertToEntity(List<StatutDto> dtos)
         {
             if (dtos == null)
@@ -59,6 +76,11 @@ namespace Services.Converter
             return entities;
         }
 
+        /// <summary>
+        /// Convertit un <see cref="StatutDto"/> en <see cref="Statut"/>.
+        /// </summary>
+        /// <param name="vm">L'entity à convertir.</param>
+        /// <returns>Le dto convertit</returns>
         internal static Statut ConvertToEntity(StatutDto dto)
         {
             if (dto == null)

@@ -8,9 +8,16 @@ using System.Threading.Tasks;
 
 namespace Services.Converter
 {
+    /// <summary>
+    /// Convertisseur de <see cref="Formation"/> en <see cref="FormationDto"/> et vice versa.
+    /// </summary>
     internal class FormationConverter
     {
-
+        /// <summary>
+        /// Convertit une liste de <see cref="Formation"/> en liste de <see cref="FormationDto"/>.
+        /// </summary>
+        /// <param name="dtos">La liste de Dto.</param>
+        /// <returns>La liste d'entity convertie.</returns>
         internal static List<FormationDto> ConvertToDto(List<Formation> entities)
         {
             if(entities == null)
@@ -28,6 +35,11 @@ namespace Services.Converter
             return dtos;
         }
 
+        /// <summary>
+        /// Convertit un <see cref="Formation"/> en <see cref="FormationDto"/>.
+        /// </summary>
+        /// <param name="dto">Le dto à convertir.</param>
+        /// <returns>L'entity convertit</returns>
         internal static FormationDto ConvertToDto(Formation entity)
         {
             if(entity == null)
@@ -44,6 +56,11 @@ namespace Services.Converter
             return dto;
         }
 
+        /// <summary>
+        /// Convertit une liste de <see cref="FormationDto"/> en liste de <see cref="Formation"/>.
+        /// </summary>
+        /// <param name="vms">La liste de entity.</param>
+        /// <returns>La liste de dto convertie.</returns>
         internal static List<Formation> ConvertToEntity(List<FormationDto> dtos)
         {
             if (dtos == null)
@@ -61,6 +78,11 @@ namespace Services.Converter
             return entities;
         }
 
+        /// <summary>
+        /// Convertit un <see cref="FormationDto"/> en <see cref="Formation"/>.
+        /// </summary>
+        /// <param name="vm">L'entity à convertir.</param>
+        /// <returns>Le dto convertit</returns>
         internal static Formation ConvertToEntity(FormationDto dto)
         {
             if (dto == null)

@@ -21,7 +21,7 @@ namespace Services
         /// </summary>
         /// <param name="id">Critère identifiant</param>
         /// <returns>Liste d'employés</returns>
-        Task<List<Employe>> GetEmployes(int? id = null);
+        Task<List<EmployeDto>> GetEmployes(int? id = null);
 
         /// <summary>
         /// Crée ou modifie un employé
@@ -75,7 +75,7 @@ namespace Services
         /// </summary>
         /// <param name="id">Critère identifiant</param>
         /// <returns>Liste de formations</returns>
-        Task<List<Formation>> GetFormations(int? id = null);
+        Task<List<FormationDto>> GetFormations(int? id = null);
 
         /// <summary>
         /// Crée ou modifie une formation
@@ -125,9 +125,9 @@ namespace Services
         /// <summary>
         /// Obtient une liste de statuts selon les critères
         /// </summary>
-        /// <param name="id">Critère identifiant</param>
+        /// <param name="id">Critère identifianst</param>
         /// <returns>Liste de statuts</returns>
-        Task<List<Statut>> GetStatuts(int? id = null);
+        Task<List<StatutDto>> GetStatuts(int? id = null);
 
         /// <summary>
         /// Crée ou modifie un statut
@@ -153,7 +153,7 @@ namespace Services
         /// </summary>
         /// <param name="id">Critère identifiant</param>
         /// <returns>Liste d'expériences</returns>
-        Task<List<Experience>> GetExperiences(int? id = null);
+        Task<List<ExperienceDto>> GetExperiences(int? id = null);
 
         /// <summary>
         /// Crée ou modifie une expérience

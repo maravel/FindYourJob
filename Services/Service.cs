@@ -29,16 +29,17 @@ namespace Services
         /// Obtient une liste d'employés selon les critères
         /// </summary>
         /// <param name="id">Critère identifiant</param>
-        /// <returns>Liste d'<see cref="Employe"/></returns>
-        public async Task<List<Employe>> GetEmployes(int? id = null)
+        /// <returns>Liste d'<see cref="EmployeDto"/></returns>
+        public async Task<List<EmployeDto>> GetEmployes(int? id = null)
         {
             try
             {
                 if (id.HasValue)
                 {
-                    return await DbContext.Employes.Where(e => e.Id == id.Value).ToListAsync();
+                    return EmployeConverter.ConvertToDto(await DbContext.Employes.Where(e => e.Id == id.Value).ToListAsync());
                 }
-                return await DbContext.Employes.ToListAsync();
+
+                return EmployeConverter.ConvertToDto(await DbContext.Employes.ToListAsync());
             }
             catch (Exception)
             {
@@ -126,7 +127,7 @@ namespace Services
         /// Obtient une liste d'offres selon les critères
         /// </summary>
         /// <param name="id">Critère identifiant</param>
-        /// <returns>Liste d'<see cref="Offre"/></returns>
+        /// <returns>Liste d'<see cref="OffreDto"/></returns>
         public async Task<List<OffreDto>> GetOffres(int? id = null)
         {
             try
@@ -225,17 +226,17 @@ namespace Services
         /// Obtient une liste de formation selon les critères
         /// </summary>
         /// <param name="id">Critère identifiant</param>
-        /// <returns>Liste de <see cref="Formation"/></returns>
-        public async Task<List<Formation>> GetFormations(int? id = null)
+        /// <returns>Liste de <see cref="FormationDto"/></returns>
+        public async Task<List<FormationDto>> GetFormations(int? id = null)
         {
             try
             {
                 if (id.HasValue)
                 {
-                    return await DbContext.Formations.Where(f => f.Id == id.Value).ToListAsync();
+                    return FormationConverter.ConvertToDto(await DbContext.Formations.Where(f => f.Id == id.Value).ToListAsync());
                 }
 
-                return await DbContext.Formations.ToListAsync();
+                return FormationConverter.ConvertToDto(await DbContext.Formations.ToListAsync());
             }
             catch (Exception)
             {
@@ -424,17 +425,17 @@ namespace Services
         /// Obtient une liste de statuts selon les critères
         /// </summary>
         /// <param name="id">Critère identifiant</param>
-        /// <returns>Liste de <see cref="Statut"/></returns>
-        public async Task<List<Statut>> GetStatuts(int? id = null)
+        /// <returns>Liste de <see cref="StatutDto"/></returns>
+        public async Task<List<StatutDto>> GetStatuts(int? id = null)
         {
             try
             {
                 if (id.HasValue)
                 {
-                    return await DbContext.Statuts.Where(s => s.Id == id.Value).ToListAsync();
+                    return StatutConverter.ConvertToDto(await DbContext.Statuts.Where(s => s.Id == id.Value).ToListAsync());
                 }
 
-                return await DbContext.Statuts.ToListAsync();
+                return StatutConverter.ConvertToDto(await DbContext.Statuts.ToListAsync());
             }
             catch (Exception)
             {
@@ -519,17 +520,17 @@ namespace Services
         /// Obtient une liste de expériences selon les critères
         /// </summary>
         /// <param name="id">Critère identifiant</param>
-        /// <returns>Liste de <see cref="Experience"/></returns>
-        public async Task<List<Experience>> GetExperiences(int? id = null)
+        /// <returns>Liste de <see cref="ExperienceDto"/></returns>
+        public async Task<List<ExperienceDto>> GetExperiences(int? id = null)
         {
             try
             {
                 if (id.HasValue)
                 {
-                    return await DbContext.Experiences.Where(e => e.Id == id.Value).ToListAsync();
+                    return ExperienceConverter.ConvertToDto(await DbContext.Experiences.Where(e => e.Id == id.Value).ToListAsync());
                 }
 
-                return await DbContext.Experiences.ToListAsync();
+                return ExperienceConverter.ConvertToDto(await DbContext.Experiences.ToListAsync());
             }
             catch (Exception)
             {
