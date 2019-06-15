@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace Services.Converter
 {
-    internal class OffreConverter
+    internal class PostulationConverter
     {
 
-        internal static List<OffreDto> ConvertToDto(List<Offre> entities)
+        internal static List<PostulationDto> ConvertToDto(List<Postulation> entities)
         {
             if(entities == null)
             {
                 return null;
             }
 
-            List<OffreDto> dtos = new List<OffreDto>();
+            List<PostulationDto> dtos = new List<PostulationDto>();
 
             foreach(var entity in entities)
             {
@@ -28,33 +28,30 @@ namespace Services.Converter
             return dtos;
         }
 
-        internal static OffreDto ConvertToDto(Offre entity)
+        internal static PostulationDto ConvertToDto(Postulation entity)
         {
             if(entity == null)
             {
                 return null;
             }
 
-            OffreDto dto = new OffreDto();
-            dto.Id = entity.Id;
-            dto.Intitule = entity.Intitule;
-            dto.Responsable = entity.Responsable;
-            dto.Salaire = entity.Salaire;
+            PostulationDto dto = new PostulationDto();
+            dto.EmployeId = entity.EmployeId;
+            dto.OffreId = entity.OffreId;
             dto.StatutId = entity.StatutId;
-            dto.Description = entity.Description;
             dto.Date = entity.Date;
 
             return dto;
         }
 
-        internal static List<Offre> ConvertToEntity(List<OffreDto> dtos)
+        internal static List<Postulation> ConvertToEntity(List<PostulationDto> dtos)
         {
             if (dtos == null)
             {
                 return null;
             }
 
-            List<Offre> entities = new List<Offre>();
+            List<Postulation> entities = new List<Postulation>();
 
             foreach (var dto in dtos)
             {
@@ -64,20 +61,17 @@ namespace Services.Converter
             return entities;
         }
 
-        internal static Offre ConvertToEntity(OffreDto dto)
+        internal static Postulation ConvertToEntity(PostulationDto dto)
         {
             if (dto == null)
             {
                 return null;
             }
 
-            Offre entity = new Offre();
-            entity.Id = dto.Id;
-            entity.Intitule = dto.Intitule;
-            entity.Responsable = dto.Responsable;
-            entity.Salaire = dto.Salaire;
+            Postulation entity = new Postulation();
+            entity.EmployeId = dto.EmployeId;
+            entity.OffreId = dto.OffreId;
             entity.StatutId = dto.StatutId;
-            entity.Description = dto.Description;
             entity.Date = dto.Date;
 
             return entity;

@@ -58,5 +58,52 @@ namespace AppWeb.Adapter
 
             return vm;
         }
+
+        /// <summary>
+        /// Convertit une liste de <see cref="EmployeViewModel"/> en liste de <see cref="EmployeDto"/>.
+        /// </summary>
+        /// <param name="vms">La liste de ViewModel.</param>
+        /// <returns>La liste de dto convertie.</returns>
+        internal static List<EmployeDto> ConvertToDto(List<EmployeViewModel> vms)
+        {
+            if (vms == null)
+            {
+                return null;
+            }
+
+            List<EmployeDto> dtos = new List<EmployeDto>();
+
+            foreach (var vm in vms)
+            {
+                dtos.Add(ConvertToDto(vm));
+            }
+
+            return dtos;
+        }
+
+        /// <summary>
+        /// Convertit un <see cref="EmployeViewModel"/> en <see cref="EmployeDto"/>.
+        /// </summary>
+        /// <param name="vm">Le ViewModel à convertir.</param>
+        /// <returns>Le dto convertit</returns>
+        internal static EmployeDto ConvertToDto(EmployeViewModel vm)
+        {
+            if (vm == null)
+            {
+                return null;
+            }
+
+            EmployeDto dto = new EmployeDto
+            {
+                Anciennete = vm.Anciennete,
+                Biographie = vm.Biographie,
+                Id = vm.Id,
+                DateNaissance = vm.DateNaissance,
+                Nom = vm.Nom,
+                Prenom = vm.Prenom
+            };
+
+            return dto;
+        }
     }
 }

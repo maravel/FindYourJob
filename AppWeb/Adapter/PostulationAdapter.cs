@@ -56,5 +56,50 @@ namespace AppWeb.Adapter
 
             return vm;
         }
+
+        /// <summary>
+        /// Convertit une liste de <see cref="PostulationViewModel"/> en liste de <see cref="PostulationDto"/>.
+        /// </summary>
+        /// <param name="vms">La liste de ViewModel.</param>
+        /// <returns>La liste de dto convertie.</returns>
+        internal static List<PostulationDto> ConvertToDto(List<PostulationViewModel> vms)
+        {
+            if (vms == null)
+            {
+                return null;
+            }
+
+            List<PostulationDto> dtos = new List<PostulationDto>();
+
+            foreach (var vm in vms)
+            {
+                dtos.Add(ConvertToDto(vm));
+            }
+
+            return dtos;
+        }
+
+        /// <summary>
+        /// Convertit un <see cref="PostulationViewModel"/> en <see cref="PostulationDto"/>.
+        /// </summary>
+        /// <param name="vm">Le ViewModel à convertir.</param>
+        /// <returns>Le dto convertit</returns>
+        internal static PostulationDto ConvertToDto(PostulationViewModel vm)
+        {
+            if (vm == null)
+            {
+                return null;
+            }
+
+            PostulationDto dto = new PostulationDto
+            {
+                Date = vm.Date,
+                OffreId = vm.OffreId,
+                EmployeId = vm.EmployeId,
+                StatutId = vm.StatutId
+            };
+
+            return dto;
+        }
     }
 }

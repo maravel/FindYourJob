@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace Services.Converter
 {
-    internal class OffreConverter
+    internal class StatutConverter
     {
 
-        internal static List<OffreDto> ConvertToDto(List<Offre> entities)
+        internal static List<StatutDto> ConvertToDto(List<Statut> entities)
         {
             if(entities == null)
             {
                 return null;
             }
 
-            List<OffreDto> dtos = new List<OffreDto>();
+            List<StatutDto> dtos = new List<StatutDto>();
 
             foreach(var entity in entities)
             {
@@ -28,33 +28,28 @@ namespace Services.Converter
             return dtos;
         }
 
-        internal static OffreDto ConvertToDto(Offre entity)
+        internal static StatutDto ConvertToDto(Statut entity)
         {
             if(entity == null)
             {
                 return null;
             }
 
-            OffreDto dto = new OffreDto();
+            StatutDto dto = new StatutDto();
             dto.Id = entity.Id;
-            dto.Intitule = entity.Intitule;
-            dto.Responsable = entity.Responsable;
-            dto.Salaire = entity.Salaire;
-            dto.StatutId = entity.StatutId;
-            dto.Description = entity.Description;
-            dto.Date = entity.Date;
+            dto.Libelle = entity.Libelle;
 
             return dto;
         }
 
-        internal static List<Offre> ConvertToEntity(List<OffreDto> dtos)
+        internal static List<Statut> ConvertToEntity(List<StatutDto> dtos)
         {
             if (dtos == null)
             {
                 return null;
             }
 
-            List<Offre> entities = new List<Offre>();
+            List<Statut> entities = new List<Statut>();
 
             foreach (var dto in dtos)
             {
@@ -64,21 +59,16 @@ namespace Services.Converter
             return entities;
         }
 
-        internal static Offre ConvertToEntity(OffreDto dto)
+        internal static Statut ConvertToEntity(StatutDto dto)
         {
             if (dto == null)
             {
                 return null;
             }
 
-            Offre entity = new Offre();
+            Statut entity = new Statut();
             entity.Id = dto.Id;
-            entity.Intitule = dto.Intitule;
-            entity.Responsable = dto.Responsable;
-            entity.Salaire = dto.Salaire;
-            entity.StatutId = dto.StatutId;
-            entity.Description = dto.Description;
-            entity.Date = dto.Date;
+            entity.Libelle = dto.Libelle;
 
             return entity;
         }
