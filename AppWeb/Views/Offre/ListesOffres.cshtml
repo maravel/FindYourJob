@@ -2,18 +2,64 @@
 
 @model List<OffreViewModel>
 
-<form action="@Url.Action("SearchOffre","Offre")">
+@*<form action="@Url.Action("SearchOffre","Offre")">
     @Html.TextBox("searchText")
     <button>Rechercher</button>
-</form>
+</form>*@
 
-<ul>
-    @foreach(var offre in Model)
-    {
-        <li>@offre.Intitule</li>
+<div class="py-5">
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="mb-2"><b>All the offers</b></h3>
+            </div>
+        </div>
+        <div class="row py-4">
+            <div class="col-md-12">
+                <div class="form-group"><input id="researchInput" type="text" style= "padding: 1.7rem;font-size: large;" class="form-control mx-2 form-control-lg" placeholder="Ex : Web developer"></div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var offre in Model)
+            {
+                <div class="col-lg-4 p-3 col-md-6 cards">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            @{
+                                int maxlengthtitle = 30;
+                                string title = offre.Intitule.Length <= maxlengthtitle ? offre.Intitule : offre.Intitule.Substring(0, maxlengthtitle) + "...";
+                            }
+                            <h3 contenteditable="true"> <b>@title</b> </h3>
+                            @{
+                                int maxlength = 45;
+                                string desc = offre.Description.Length <= maxlength ? offre.Description : offre.Description.Substring(0, maxlength) + "...";
+                            }
+                            <p>@desc</p>
+                            <p class="mb-0 lead"> <a href="@Url.Action("DetailOffreAsync", "Offre", new { id = offre.Id })">Read more</a> </p>
+                        </div>
+                    </div>
+                </div>
+            }
 
-        <a href="@Url.Action("DetailOffreAsync", "Offre", new { id = offre.Id })">Detail</a>
-    }
-</ul>
+        </div>
+    </div>
+</div>
 
+<script>
+    $("#researchInput").on("keyup", function (e) {
+        e.preventDefault();
 
+        let text = $("#researchInput").val().toUpperCase();
+
+        $(".cards").each(function (item) {
+            if ($(this).find("h3").text().toUpperCase().includes(text)) {
+                $(this).show();
+            }
+            else {
+                $(this).hide();
+            }
+        });
+
+    });
+
+</script>

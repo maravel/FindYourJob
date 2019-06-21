@@ -54,6 +54,7 @@ namespace AppWeb.Controllers
             postulation.Date = DateTime.Now;
             postulation.EmployeId = idUser;
             postulation.OffreId = idOffre;
+            postulation.StatutId = 1;
 
             Result res = await service.AddUpdatePostulation(postulation, true);
 

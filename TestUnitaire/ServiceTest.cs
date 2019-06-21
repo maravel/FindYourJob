@@ -27,7 +27,7 @@ namespace TestUnitaire
                 Nom = nom
             };
 
-            List<Employe> employes = await service.GetEmployes();
+            List<EmployeDto> employes = await service.GetEmployes();
             int nb = employes.Count;
 
             // Act
@@ -59,7 +59,7 @@ namespace TestUnitaire
             };
 
             await service.AddUpdateStatut(s, true);
-            List<Statut> es = await service.GetStatuts();
+            List<StatutDto> es = await service.GetStatuts();
             int id = es.Where(statut => statut.Libelle == libelle).FirstOrDefault().Id;
 
             Offre offreTest = new Offre
@@ -98,7 +98,7 @@ namespace TestUnitaire
             };
 
             await service.AddUpdateEmploye(e, true);
-            List<Employe> es = await service.GetEmployes();
+            List<EmployeDto> es = await service.GetEmployes();
             int id = es.Where(employe => employe.Nom == nomEmploye).FirstOrDefault().Id;
 
             Formation formationTest = new Formation
@@ -110,7 +110,7 @@ namespace TestUnitaire
             // Act
             Result res = await service.AddUpdateFormation(formationTest, true);
 
-            List<Formation> formations = await service.GetFormations();
+            List<FormationDto> formations = await service.GetFormations();
             int nb = formations.Where(ex => ex.Intitule == intitule).Count();
 
             // Assert
@@ -139,7 +139,7 @@ namespace TestUnitaire
             };
 
             await service.AddUpdateEmploye(e, true);
-            List<Employe> es = await service.GetEmployes();
+            List<EmployeDto> es = await service.GetEmployes();
             int employeId = es.Where(employe => employe.Nom == nomEmploye).FirstOrDefault().Id;
 
             Statut s = new Statut
@@ -148,7 +148,7 @@ namespace TestUnitaire
             };
 
             await service.AddUpdateStatut(s, true);
-            List<Statut> ss = await service.GetStatuts();
+            List<StatutDto> ss = await service.GetStatuts();
             int statutId = ss.Where(sa => sa.Libelle == libelle).FirstOrDefault().Id;
 
             Offre o = new Offre
@@ -161,7 +161,7 @@ namespace TestUnitaire
             List<OffreDto> os = await service.GetOffres();
             int offreId = os.Where(sa => sa.Intitule == intitule).FirstOrDefault().Id;
 
-            Postulation postulationTest = new Postulation
+            PostulationDto postulationTest = new PostulationDto
             {
                 StatutId = statutId,
                 OffreId = offreId,
@@ -195,7 +195,7 @@ namespace TestUnitaire
                 Libelle = libelle
             };
 
-            List<Statut> statuts = await service.GetStatuts();
+            List<StatutDto> statuts = await service.GetStatuts();
             int nb = statuts.Count;
 
             // Act
@@ -227,7 +227,7 @@ namespace TestUnitaire
             };
 
             await service.AddUpdateEmploye(e, true);
-            List<Employe> es = await service.GetEmployes();
+            List<EmployeDto> es = await service.GetEmployes();
             int id = es.Where(employe => employe.Nom == nomEmploye).FirstOrDefault().Id;
 
             Experience exp = new Experience
@@ -239,7 +239,7 @@ namespace TestUnitaire
             // Act
             Result res = await service.AddUpdateExperience(exp, true);
 
-            List<Experience> exps = await service.GetExperiences();
+            List<ExperienceDto> exps = await service.GetExperiences();
             int nb = exps.Where(ex => ex.Intitule == intitule).Count();
             
             // Assert

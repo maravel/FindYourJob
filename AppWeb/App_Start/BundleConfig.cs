@@ -22,9 +22,14 @@ namespace AppWeb
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/Scripts/nav-ontop").Include(
+                      "~/Scripts/nav-ontop.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/nucleo-icons.css",
+                      "~/Content/new-ui-kit.css"));
         }
     }
 }
