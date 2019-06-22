@@ -50,7 +50,7 @@ namespace WPF.ViewModels
 
             Task t = Task.Run(async () =>
             {
-                IList<Statut> listeStatuts = await service.GetStatuts();
+                IList<StatutDto> listeStatuts = await service.GetStatuts();
                 _statuts = new CollectionView(listeStatuts);
             });
 

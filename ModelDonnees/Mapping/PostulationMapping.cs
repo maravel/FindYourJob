@@ -34,7 +34,7 @@ namespace ModelDonnees.Mapping
 
             Property(p => p.StatutId)
                 .HasColumnName("POS_STATUT_ID")
-                .IsOptional();
+                .IsRequired();
 
             HasRequired(p => p.Employe).WithMany(e => e.Postulations).HasForeignKey(f => f.EmployeId);
 

@@ -43,5 +43,16 @@ namespace AppWeb.Controllers
 
             return View("ListesOffres", vms);
         }
+
+        public ActionResult CreateOfferView()
+        {
+            return View("CreateOffre", new OffreViewModel());
+        }
+
+        public ActionResult CreateOfferAsync(OffreViewModel vm)
+        {
+
+            return Json(new { error = false, message = "Successful creation" }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

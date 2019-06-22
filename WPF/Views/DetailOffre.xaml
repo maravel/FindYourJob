@@ -19,7 +19,7 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" HorizontalAlignment="Stretch" Background="CadetBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="19" FontWeight="Bold">Détail d'une offre</Label>
+        <Label Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="19" FontWeight="Bold">Détail d'une offre</Label>
         
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="3" Orientation="Vertical">
             <Label>Intitulé</Label>

@@ -1,0 +1,71 @@
+﻿@using AppWeb.Models
+
+@model OffreViewModel
+
+
+<div class="pt-5 bg-dark align-items-center d-flex bg-dark">
+    <div class="container py-5 my-5">
+        <div class="row">
+            @using (Html.BeginForm("CreateOfferAsync", "Offre"))
+            {
+            <div class="">
+                <h1 class="display-3 mb-4">Create an offer</h1>
+
+                <p class="lead mb-4">@Html.DisplayNameFor(m => m.Intitule)</p>
+
+                <div class="form-group mb-2">
+                    <div class="input-group border-0">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="now-ui-icons shopping_tag-content lg"></i>
+                            </span>
+                        </div>
+                        @Html.TextBoxFor(m => m.Intitule, new { @class = "form-control", placeholder = "Ex: Lead developer PHP ..." })
+                    </div>
+                </div>
+
+                <p class="lead mb-4">@Html.DisplayNameFor(m => m.Responsable)</p>
+
+                <div class="form-group mb-2">
+                    <div class="input-group border-0">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="now-ui-icons users_single-02 lg"></i>
+                            </span>
+                        </div>
+                        @Html.TextBoxFor(m => m.Responsable, new { @class = "form-control", placeholder = "Ex: Microsoft ..." })
+                    </div>
+                </div>
+
+                <p class="lead mb-4">@Html.DisplayNameFor(m => m.Salaire)</p>
+
+                <div class="form-group mb-2">
+                    <div class="input-group border-0">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="now-ui-icons business_money-coins lg"></i>
+                            </span>
+                        </div>
+                        @Html.TextBoxFor(m => m.Salaire, new { @class = "form-control", type = "number", placeholder = "Ex: 1300" })
+                    </div>
+                </div>
+
+                <p class="lead mb-4">@Html.DisplayNameFor(m => m.Date)</p>
+
+                <div class="form-group mb-2">
+                    <div class="input-group border-0">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="now-ui-icons ui-1_calendar-60 lg"></i>
+                            </span>
+                        </div>
+                        @Html.TextBoxFor(m => m.Date, new { @class = "form-control", type = "date", placeholder = "Ex: 22/06/2019" })
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-lg btn-primary">Create</button>
+            </div>
+            }
+        </div>
+    </div>
+</div>

@@ -17,7 +17,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Label HorizontalAlignment="Stretch" Background="BlueViolet" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="19" FontWeight="Bold">Find Your Job</Label>
+        <Label HorizontalAlignment="Stretch" Background="#F96330" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="19" FontWeight="Bold">Find Your Job</Label>
 
         <my:ListOffre Grid.Row="1" DataContext="{Binding ListeOffreViewModel}"></my:ListOffre>
     </Grid>

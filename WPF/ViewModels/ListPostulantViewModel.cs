@@ -1,4 +1,5 @@
-﻿using ModelDonnees.Entity;
+﻿using Dto.Dto;
+using ModelDonnees.Entity;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace WPF.ViewModels
         #region Variables
         
         private IService service;
-        private ObservableCollection<Postulation> _postulation;
+        private ObservableCollection<PostulationDto> _postulation;
 
         #endregion
 
@@ -27,9 +28,9 @@ namespace WPF.ViewModels
         public ListPostulantViewModel(int idOffre)
         {
             service = new Service();
-            _postulation = new ObservableCollection<Postulation>();
+            _postulation = new ObservableCollection<PostulationDto>();
             
-            List<Postulation> postulations = new List<Postulation>();
+            List<PostulationDto> postulations = new List<PostulationDto>();
 
             Task t = Task.Run(async () =>
             {
@@ -41,7 +42,7 @@ namespace WPF.ViewModels
             // on trie les offres par date (la plus récente en premier)
             postulations = postulations.OrderByDescending(o => o.Date).ToList();
 
-            foreach (Postulation p in postulations)
+            foreach (PostulationDto p in postulations)
             {
                 _postulation.Add(p);
             }
@@ -54,7 +55,7 @@ namespace WPF.ViewModels
         /// <summary>
         /// Obtient ou définit une collection de <see cref="Postulation"/>(Observable)
         /// </summary>
-        public ObservableCollection<Postulation> Postulants
+        public ObservableCollection<PostulationDto> Postulants
         {
             get { return _postulation; }
             set

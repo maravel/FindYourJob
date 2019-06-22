@@ -47,7 +47,7 @@ namespace AppWeb.Controllers
 
             if(offreDto == null)
             {
-                return Json(new { error = true, message = "Offre non trouvée" }, JsonRequestBehavior.AllowGet);
+                return Json(new { error = true, message = "Offer not found" }, JsonRequestBehavior.AllowGet);
             }
 
             PostulationDto postulation = new PostulationDto();
@@ -63,7 +63,9 @@ namespace AppWeb.Controllers
                 return Json(new { error = true, message = res.Error }, JsonRequestBehavior.AllowGet);
             }
 
-            return Json(new { error = false, message = "Postulation réussie" }, JsonRequestBehavior.AllowGet);
+            return Json(new { error = false, message = "Successful postulation" }, JsonRequestBehavior.AllowGet);
         }
+
+        
     }
 }

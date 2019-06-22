@@ -198,6 +198,8 @@
     <Content Include="Views\Offre\ListesOffres.cshtml" />
     <Content Include="Views\Offre\DetailOffre.cshtml" />
     <Content Include="Views\Employe\ListesOffresPostulees.cshtml" />
+    <Content Include="Views\Shared\_listeOffres.cshtml" />
+    <Content Include="Views\Offre\CreateOffre.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
