@@ -40,6 +40,111 @@ namespace TestUnitaire
 
         }
 
+        [TestMethod]
+        public async Task TestUpdateEmployeAsync()
+        {
+            IService service = new Service();
+
+            // Arrange
+            string nom = "Employe";
+            string newNom = "New";
+            Employe employetest = new Employe
+            {
+                Nom = nom
+            };
+
+            Result res = await service.AddUpdateEmploye(employetest, true);
+
+            // Act
+            employetest.Nom = newNom;
+            res = await service.AddUpdateEmploye(employetest, false);
+            List<EmployeDto> employes = await service.GetEmployes();
+            EmployeDto employe = employes.SingleOrDefault();
+
+
+            // Assert
+            Assert.IsFalse(res.HasError());
+            Assert.AreEqual(newNom, employe.Nom);
+
+        }
+
+        [TestMethod]
+        public async Task TestGetEmployesAsync()
+        {
+            IService service = new Service();
+
+            // Arrange
+            string nom = "Employe";
+            Employe employetest = new Employe
+            {
+                Nom = nom
+            };
+
+            int nb = 3;
+
+            for(int i = 0; i < nb; i++)
+            {
+                await service.AddUpdateEmploye(employetest, true);
+            }
+
+            // Act
+            List<EmployeDto> employes = await service.GetEmployes();
+            int count = employes.Count;
+
+            // Assert
+            Assert.AreEqual(nb, count);
+
+        }
+
+        [TestMethod]
+        public async Task TestGetEmployeAsync()
+        {
+            IService service = new Service();
+
+            // Arrange
+            string nom = "Employe";
+            Employe employetest = new Employe
+            {
+                Nom = nom
+            };
+
+             await service.AddUpdateEmploye(employetest, true);
+
+            // Act
+            List<EmployeDto> employes = await service.GetEmployes(employetest.Id);
+            EmployeDto employe = employes.SingleOrDefault();
+
+            // Assert
+            Assert.AreEqual(employe.Nom, employetest.Nom);
+
+        }
+
+        [TestMethod]
+        public async Task TestRemoveEmployeAsync()
+        {
+            IService service = new Service();
+
+            // Arrange
+            string nom = "Employe";
+            Employe employetest = new Employe
+            {
+                Nom = nom
+            };
+
+            await service.AddUpdateEmploye(employetest, true);
+            List<EmployeDto> employes = await service.GetEmployes();
+            int nb = employes.Count;
+
+            // Act
+            Result res = await service.RemoveEmploye(employetest.Id);
+            employes = await service.GetEmployes();
+
+            // Assert
+            Assert.IsFalse(res.HasError());
+            Assert.AreEqual(nb - 1, employes.Count);
+
+        }
+
         #endregion
 
         #region Offres
