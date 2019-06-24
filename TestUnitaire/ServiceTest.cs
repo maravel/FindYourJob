@@ -83,21 +83,13 @@ namespace TestUnitaire
             List<EmployeDto> employes = await service.GetEmployes();
             int defaultCount = employes.Count;
 
-            int nb = 3;
-
-            for (int i = 0; i < nb; i++)
-            {
-                await service.AddUpdateEmploye(employetest, true);
-            }
-
+            await service.AddUpdateEmploye(employetest, true);
 
             // Act
             employes = await service.GetEmployes();
-            int count = employes.Count;
 
             // Assert
-            Assert.AreEqual(nb, count);
-
+            Assert.AreEqual(defaultCount, employes.Count - 1);
         }
 
         [TestMethod]
@@ -210,7 +202,7 @@ namespace TestUnitaire
             List<EmployeDto> es = await service.GetEmployes();
             int id = es.Where(employe => employe.Nom == nomEmploye).FirstOrDefault().Id;
 
-            Formation formationTest = new Formation
+            FormationDto formationTest = new FormationDto
             {
                 Intitule = intitule,
                 EmployeId = id
@@ -237,10 +229,10 @@ namespace TestUnitaire
             IService service = new Service();
 
             // Arrange
-            string libelle = "Statut";
+            string libelle = "StatutTest";
             int statut = 0;
-            string nomEmploye = "Mathieu";
-            string intitule = "Offre";
+            string nomEmploye = "MathieuTest";
+            string intitule = "OffreTest";
 
             Employe e = new Employe
             {
@@ -282,6 +274,10 @@ namespace TestUnitaire
 
             List<PostulationDto> postulations = await service.GetPostulations();
             int nb = postulations.Where(p => p.StatutId == statut).Count();
+
+            await service.RemoveEmploye(employeId);
+            await service.RemoveOffre(offreId);
+            await service.RemoveStatut(statutId);
 
             // Assert
             Assert.IsTrue(nb >= 1);
