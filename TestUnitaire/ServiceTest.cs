@@ -58,7 +58,7 @@ namespace TestUnitaire
             // Act
             employetest.Nom = newNom;
             res = await service.AddUpdateEmploye(employetest, false);
-            List<EmployeDto> employes = await service.GetEmployes();
+            List<EmployeDto> employes = await service.GetEmployes(employetest.Id);
             EmployeDto employe = employes.SingleOrDefault();
 
 
@@ -79,16 +79,20 @@ namespace TestUnitaire
             {
                 Nom = nom
             };
+            
+            List<EmployeDto> employes = await service.GetEmployes();
+            int defaultCount = employes.Count;
 
             int nb = 3;
 
-            for(int i = 0; i < nb; i++)
+            for (int i = 0; i < nb; i++)
             {
                 await service.AddUpdateEmploye(employetest, true);
             }
 
+
             // Act
-            List<EmployeDto> employes = await service.GetEmployes();
+            employes = await service.GetEmployes();
             int count = employes.Count;
 
             // Assert
