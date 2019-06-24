@@ -132,7 +132,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Common\BaseController.cs" />
     <Compile Include="Controllers\EmployeController.cs" />
+    <Compile Include="Controllers\FormationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OffreController.cs" />
     <Compile Include="Global.asax.cs">
@@ -192,18 +194,21 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Offre\ListesOffres.cshtml" />
     <Content Include="Views\Offre\DetailOffre.cshtml" />
-    <Content Include="Views\Employe\ListesOffresPostulees.cshtml" />
+    <Content Include="Views\Employe\Account.cshtml" />
     <Content Include="Views\Shared\_listeOffres.cshtml" />
     <Content Include="Views\Offre\CreateOffre.cshtml" />
+    <Content Include="Views\Shared\_footer.cshtml" />
+    <Content Include="Views\Shared\_navbar.cshtml" />
+    <Content Include="Views\Formation\CreateFormation.cshtml" />
+    <Content Include="Views\Shared\_modalAlert.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Images\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

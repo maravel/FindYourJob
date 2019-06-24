@@ -1,4 +1,5 @@
 ﻿using AppWeb.Adapter;
+using AppWeb.Controllers.Common;
 using AppWeb.Models;
 using Dto.Dto;
 using Services;
@@ -11,13 +12,12 @@ using System.Web.Mvc;
 
 namespace AppWeb.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        private IService service = new Service();
-
         public async Task<ActionResult> Index()
         {
-            List<OffreDto> offres = await service.GetOffres();
+            // retourne les 9 plus récentes offres
+            List<OffreDto> offres = (await service.GetOffres()).OrderBy(o => o.Date).Take(9).ToList();
 
             List<OffreViewModel> vms = OffreAdapter.ConvertToViewModel(offres);
             

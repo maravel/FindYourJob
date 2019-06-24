@@ -14,7 +14,7 @@ namespace ModelDonnees
         public ContextDA() : base("name=ConnexionString")
         {
             //Database.SetInitializer<ContextDA>(new DropCreateDatabaseAlways<ContextDA>());
-            Database.SetInitializer<ContextDA>(null);
+            Database.SetInitializer<ContextDA>(new Initializer());
         }
 
         public DbSet<Offre> Offres { get; set; }

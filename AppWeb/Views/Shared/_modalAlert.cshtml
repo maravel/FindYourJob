@@ -1,0 +1,36 @@
+﻿<div class="modal fade" id="modal2">
+    <div class="modal-dialog modal-sm" style="top: 40%;" role="document">
+        <div class="modal-content text-center bg-primary">
+            <div class="modal-body">
+                <button class="btn btn-light btn-lg btn-icon rounded shadow" type="button">
+                    <i class="now-ui-icons ui-1_bell-53 text-primary x2"></i>
+                </button>
+                <p id="message_modal" class="m-4"></p>
+                <button id="button_ok" type="button" class="btn btn-primary no-display mr-3">YES</button>
+                <button type="button" class="btn btn-primary ml-3" data-dismiss="modal"> CLOSE </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function show_modal(title) {
+        $("#button_ok").addClass("no-display");
+
+        $("#modal2").find("#message_modal").html(title);
+
+        $("#modal2").modal('show');
+    }
+
+    function show_modal_action(title, action, id) {
+        $("#button_ok").removeClass("no-display");
+
+        $("#modal2").find("#message_modal").html(title);
+
+        $("#button_ok").on("click", action(id));
+
+        $("#modal2").modal('show');
+    }
+
+</script>

@@ -6,13 +6,13 @@
     <div class="container py-5 my-5">
         <div class="row">
             <div class="col-md-8 px-md-5">
-                <h1 class="display-3 mb-4">@Model.Intitule</h1>
+                <h1 class="display-4 mb-4">@Model.Intitule</h1>
                 <p class="lead mb-4">@Model.Description</p> 
                 
                 <div class="p-4 col-md-12" style="font-size:1rem;">
                     <h2 class="mb-4">Informations</h2>
                     <p>
-                       <i class="now-ui-icons ui-1_calendar-60  mr-3 d-inline text-muted"></i>Published on @Model.Date.ToString("dd/MM/yyyy")
+                        <i class="now-ui-icons ui-1_calendar-60  mr-3 d-inline text-muted"></i>Available on @Model.Date.ToString("dd/MM/yyyy")
                     </p>
                     <p>
                         <i class="now-ui-icons d-inline mr-3 text-muted objects_diamond"></i>@Model.Salaire €
@@ -20,32 +20,28 @@
                     <p>
                         <i class="now-ui-icons business_globe d-inline mr-3 text-muted"></i>@Model.Responsable
                     </p>
+                    <p>
+                        <i class="now-ui-icons travel_info d-inline mr-3 text-muted"></i>@(Model.Statut?.Libelle)
+                    </p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card-body p-4 text-center">
-                    <button onclick="postuler('@Model.Id')" class="btn btn-lg btn-primary">Apply</button>
-                    
+                    @if (Model.isApplied)
+                    {
+                        <button onclick="postuler('@Model.Id')" class="btn btn-lg btn-primary">Apply</button>
+                    }
+                    else
+                    {
+                        <button onclick="depostuler('@Model.Id')" class="btn btn-lg btn-secondary">Unapply</button>
+                    }
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="modal2">
-    <div class="modal-dialog modal-sm" style="top: 40%;" role="document">
-        <div class="modal-content text-center bg-primary">
-            <div class="modal-body">
-                <button class="btn btn-light btn-lg btn-icon rounded shadow" type="button">
-                    <i class="now-ui-icons users_circle-08 text-primary x2"></i>
-                </button>
-                <p id="message_modal" class="m-4"></p>
-                @*<button type="button" class="btn btn-primary mr-3">BACK</button>*@
-                <button type="button" class="btn btn-primary ml-3" data-dismiss="modal"> CLOSE </button>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <script>
 
@@ -55,9 +51,18 @@
             type: "POST",
             data: { idOffre: id },
             success: function (data) {
-                $("#modal2").find("#message_modal").html(data.message);
-                
-                $("#modal2").modal('show');
+                show_modal(data.message);
+            }
+        });
+    }
+
+    function depostuler(id) {
+        $.ajax({
+            url: "@Url.Action("DePostuler","Employe")",
+            type: "POST",
+            data: { idOffre: id },
+            success: function (data) {
+                show_modal(data.message);
             }
         });
     }

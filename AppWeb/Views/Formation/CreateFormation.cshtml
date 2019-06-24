@@ -1,0 +1,51 @@
+﻿@using AppWeb.Models
+
+@model FormationViewModel
+
+
+
+<div class="pt-5 bg-dark align-items-center d-flex bg-dark">
+    <div class="container py-5 my-5">
+        <div class="row">
+            @using (Html.BeginForm("CreateFormationAsync", "Formation", new AjaxOptions { OnSuccess = "onSuccess" }, FormMethod.Post, new { @style = "width:75%;" }))
+            {
+            <div class="">
+                <h3 class="display-4 mb-4">Add a formation to your profile</h3>
+                @Html.HiddenFor(m => m.Id)
+                @Html.HiddenFor(m => m.EmployeId)
+                <div class="form-group">
+                    <label>@Html.DisplayNameFor(m => m.Intitule)</label>
+                    <div class="input-group border-0">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="now-ui-icons shopping_tag-content lg"></i>
+                            </span>
+                        </div>
+                        @Html.TextBoxFor(m => m.Intitule, new { @class = "form-control", placeholder = "Ex: Computer science degree ..." })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>@Html.DisplayNameFor(m => m.Date)</label>
+                    <div class="input-group border-0">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="now-ui-icons ui-1_calendar-60 lg"></i>
+                            </span>
+                        </div>
+                        @Html.TextBoxFor(m => m.Date, new { @class = "form-control", type = "date" })
+                    </div>
+                </div>
+
+                <button type="submit" class="btn my-3 btn-lg rounded btn-primary"><i class="now-ui-icons ui-1_simple-add mr-1"></i>Add</button>
+            </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    function onSuccess() {
+        alert();
+    }
+</script>

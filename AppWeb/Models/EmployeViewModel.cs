@@ -38,5 +38,7 @@ namespace AppWeb.Models
 
         /// <summary>Liste des <see cref="Postulation"/> de l'employé</summary>
         public List<PostulationViewModel> Postulations { get; set; }
+
+        public List<OffreViewModel> OffresPostulees { get; set; }
     }
 }

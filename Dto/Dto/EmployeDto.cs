@@ -35,6 +35,13 @@ namespace Dto.Dto
         [DataMember]
         public string Biographie { get; set; }
 
+        /// <summary>Liste des <see cref="Experience"/> de l'employé</summary>
+        public List<ExperienceDto> Experiences { get; set; }
 
+        /// <summary>Liste des <see cref="Formation"/> de l'employé</summary>
+        public List<FormationDto> Formations { get; set; }
+
+        /// <summary>Liste des <see cref="Postulation"/> de l'employé</summary>
+        public List<PostulationDto> Postulations { get; set; }
     }
 }

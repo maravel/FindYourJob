@@ -6,14 +6,13 @@
 <div class="pt-5 bg-dark align-items-center d-flex bg-dark">
     <div class="container py-5 my-5">
         <div class="row">
-            @using (Html.BeginForm("CreateOfferAsync", "Offre"))
+            @using (Html.BeginForm("CreateOfferAsync", "Offre", null, FormMethod.Post, new { @style = "width:75%;" }))
             {
             <div class="">
                 <h1 class="display-3 mb-4">Create an offer</h1>
 
-                <p class="lead mb-4">@Html.DisplayNameFor(m => m.Intitule)</p>
-
-                <div class="form-group mb-2">
+                <div class="form-group">
+                    <label>@Html.DisplayNameFor(m => m.Intitule)</label>
                     <div class="input-group border-0">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">
@@ -22,11 +21,11 @@
                         </div>
                         @Html.TextBoxFor(m => m.Intitule, new { @class = "form-control", placeholder = "Ex: Lead developer PHP ..." })
                     </div>
+                   @* <small class="form-text text-muted">We'll never share your email with anyone else.</small>*@
                 </div>
 
-                <p class="lead mb-4">@Html.DisplayNameFor(m => m.Responsable)</p>
-
-                <div class="form-group mb-2">
+                <div class="form-group">
+                    <label>@Html.DisplayNameFor(m => m.Responsable)</label>
                     <div class="input-group border-0">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">
@@ -37,9 +36,8 @@
                     </div>
                 </div>
 
-                <p class="lead mb-4">@Html.DisplayNameFor(m => m.Salaire)</p>
-
-                <div class="form-group mb-2">
+                <div class="form-group">
+                    <label>@Html.DisplayNameFor(m => m.Salaire)</label>
                     <div class="input-group border-0">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">
@@ -50,9 +48,9 @@
                     </div>
                 </div>
 
-                <p class="lead mb-4">@Html.DisplayNameFor(m => m.Date)</p>
 
-                <div class="form-group mb-2">
+                <div class="form-group">
+                    <label>@Html.DisplayNameFor(m => m.Date)</label>
                     <div class="input-group border-0">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">
@@ -63,7 +61,20 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-lg btn-primary">Create</button>
+
+                <div class="form-group">
+                    <label>@Html.DisplayNameFor(m => m.Description)</label>
+                    <div class="input-group border-0">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="now-ui-icons files_paper lg"></i>
+                            </span>
+                        </div>
+                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", type = "date", rows = 4, placeholder = "Ex: Nous recherchons ..." })
+                    </div>
+                </div>
+
+                <button type="submit" class="btn my-3 btn-lg rounded btn-primary">Create</button>
             </div>
             }
         </div>

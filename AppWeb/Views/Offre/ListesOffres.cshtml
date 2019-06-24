@@ -2,16 +2,40 @@
 
 @model List<OffreViewModel>
 
-<div class="py-5">
+<div class="py-5 mt-5">
     <div class="container my-5">
         <div class="row">
-            <div class="col-md-12">
-                <h3 class="mb-2"><b>All the offers</b></h3>
-            </div>
+            @if (ViewContext.RouteData.GetRequiredString("action") == "SearchOffre")
+            {
+                <div class="col-md-12 row">
+                    <h3 class="mb-2 col-md-10"><b>Results for research : @Request.Params["searchText"]"</b></h3>
+                    <button onclick="window.location.href='@Url.Action("LitesOffresAsync","Offre")'" type="button" class="close col-md-2 text-light mb-2" data-dismiss="modal">
+                        <span>
+                            <i class="now-ui-icons ui-1_simple-remove lg"></i>
+                        </span>
+                    </button>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-12">
+                    <h3 class="mb-2"><b>All the offers</b></h3>
+                </div>
+            }
+            
         </div>
         <div class="row py-4">
             <div class="col-md-12">
-                <div class="form-group"><input id="researchInput" type="text" style= "padding: 1.7rem;font-size: large;" class="form-control mx-2 form-control-lg" placeholder="Ex : Web developer"></div>
+                <div class="input-group border-0">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="now-ui-icons ui-1_zoom-bold lg"></i>
+                        </span>
+                    </div>
+                    <form class="" action="@Url.Action("SearchOffre","Offre")">
+                        @Html.TextBox("searchText", null, new { style = "padding: 1.7rem;font-size: large;", @class = "form-control mx-2 form-control-lg", placeholder = "Ex : Web developer" })
+                    </form>
+                </div>
             </div>
         </div>
         @Html.Partial("_listeOffres", Model)
@@ -19,10 +43,10 @@
 </div>
 
 <script>
-    $("#researchInput").on("keyup", function (e) {
+    $("#searchText").on("keyup", function (e) {
         e.preventDefault();
 
-        let text = $("#researchInput").val().toUpperCase();
+        let text = $("#searchText").val().toUpperCase();
 
         $(".cards").each(function (item) {
             if ($(this).find("h3").text().toUpperCase().includes(text)) {

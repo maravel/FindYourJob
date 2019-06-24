@@ -4,94 +4,26 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@ViewBag.Title - Mon application ASP.NET</title>
+    <title>Find your job</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/Scripts/nav-ontop")
-
-
 </head>
 <body class="bg-dark">
-    <nav class="navbar navbar-expand-lg bg-primary navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" data-placement="bottom" style="font-size:1.3rem" data-toggle="tooltip" href="@Url.Action("Index","Home")">FIND YOUR JOB</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNowUIKitFree">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse text-center justify-content-end" id="navbarNowUIKitFree">
-                <ul class="navbar-nav">
-                    <li class="nav-item mx-1 align-items-center d-flex justify-content-center">
-                        <a class="nav-link" href="@Url.Action("LitesOffresAsync","Offre")">
-                            <i class="now-ui-icons files_paper x2 mr-2"></i>&nbsp;OFFERS
-                        </a>
-                    </li>
-                    <li class="nav-item mx-1 align-items-center d-flex justify-content-center">
-                        <a class="nav-link" href="@Url.Action("CreateOfferView","Offre")">
-                            <i class="now-ui-icons ui-1_simple-add x2 mr-2"></i>CREATE
-                        </a>
-                    </li>
-                </ul>
-                <a class="btn btn-light text-primary" href="@Url.Action("GetOffresPostuleesAsync","Employe")">
-                    <i class="now-ui-icons users_single-02 mr-1"></i>ACCOUNT
-                </a>
-            </div>
-        </div>
-    </nav>
+
+    @Html.Partial("_navbar")
 
     @RenderBody()
 
-    <div class="">
-        <div class="container">
-            <div class="row">
-                <div class="p-4 col-md-3">
-                    <h2 class="mb-4">Find your job</h2>
-                    <p>Internal platform to the job-sharing business</p>
-                </div>
-                <div class="p-4 col-md-3">
-                    <h2 class="mb-4">Pages</h2>
-                    <ul class="list-unstyled">
-                        <li><a href="@Url.Action("Index", "Home")" class="text-light">Home</a> <br> </li>
-                        <li><a href="@Url.Action("LitesOffresAsync","Offre")" class="text-light">Offers</a> <br> </li>
-                        <li><a href="#" class="text-light">Our services</a><br></li>
-                        <li><a href="@Url.Action("GetOffresPostuleesAsync","Employe")" class="text-light">Account</a></li>
-                    </ul>
-                </div>
-                <div class="p-4 col-md-3">
-                    <h2 class="mb-4">Contact</h2>
-                    <p>
-                        <a href="#" class="text-light">
-                            <i class="fa d-inline mr-3 text-muted fa-phone"></i>+246 - 542 550 5462
-                        </a>
-                    </p>
-                    <p>
-                        <a href="#" class="text-light">
-                            <i class="fa d-inline mr-3 text-muted fa-envelope-o"></i>info@pingendo.com
-                        </a>
-                    </p>
-                    <p>
-                        <a href="#" class="text-light">
-                            <i class="fa d-inline mr-3 fa-map-marker text-muted"></i>365 Park Street, NY
-                        </a>
-                    </p>
-                </div>
-                <div class="p-4 col-md-3">
-                    <h2 class="mb-4">Subscribe</h2>
-                    <form>
-                        <fieldset class="form-group"> <label for="exampleInputEmail1">Get our newsletter</label> <input type="email" class="form-control" placeholder="Enter email"> </fieldset> <button type="submit" class="btn btn-outline-dark">Submit</button>
-                    </form>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 mt-3">
-                    <p class="text-center">Site développé par Mathieu RAVEL et Bernardo PEREIRA AUGUSTO.</p>
-                </div>
-            </div>
-        </div>
+    <div>
+        @Html.Partial("_footer")
     </div>
-    
+
+    @Html.Partial("_modalAlert")
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    
+
 </body>
 </html>

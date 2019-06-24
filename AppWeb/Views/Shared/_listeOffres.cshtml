@@ -12,7 +12,7 @@
                         int maxlengthtitle = 30;
                         string title = offre.Intitule.Length <= maxlengthtitle ? offre.Intitule : offre.Intitule.Substring(0, maxlengthtitle) + "...";
                     }
-                    <h3 contenteditable="true"> <b>@title</b> </h3>
+                    <h3> <b>@title</b> </h3>
                     @{
                         int maxlength = 45;
                         string desc = offre.Description.Length <= maxlength ? offre.Description : offre.Description.Substring(0, maxlength) + "...";

@@ -15,7 +15,7 @@ namespace Console
             ContextDA context = new ContextDA();
             try
             {
-                List<Offre> offres = context.Offres.ToList();
+                List<Offre> offres = context.Offres.Include("Statut").ToList();
             }
             catch (Exception )
             {

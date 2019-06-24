@@ -54,6 +54,9 @@ namespace Services.Converter
             dto.DateNaissance = entity.DateNaissance;
             dto.Nom = entity.Nom;
             dto.Prenom = entity.Prenom;
+            dto.Formations = FormationConverter.ConvertToDto(entity.Formations);
+            dto.Experiences = ExperienceConverter.ConvertToDto(entity.Experiences);
+            dto.Postulations = PostulationConverter.ConvertToDto(entity.Postulations);
 
             return dto;
         }

@@ -70,6 +70,7 @@
     <Compile Include="Entity\Postulation.cs" />
     <Compile Include="Entity\Offre.cs" />
     <Compile Include="Entity\Statut.cs" />
+    <Compile Include="Initializer.cs" />
     <Compile Include="Mapping\ExperienceMapping.cs" />
     <Compile Include="Mapping\FormationMapping.cs" />
     <Compile Include="Mapping\PostulationMapping.cs" />

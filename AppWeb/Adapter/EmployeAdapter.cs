@@ -53,7 +53,10 @@ namespace AppWeb.Adapter
                 Id = dto.Id,
                 DateNaissance = dto.DateNaissance,
                 Nom = dto.Nom,
-                Prenom = dto.Prenom
+                Prenom = dto.Prenom,
+                Formations = FormationAdapter.ConvertToViewModel(dto.Formations),
+                Experiences = ExperienceAdapter.ConvertToViewModel(dto.Experiences),
+                Postulations = PostulationAdapter.ConvertToViewModel(dto.Postulations)
             };
 
             return vm;

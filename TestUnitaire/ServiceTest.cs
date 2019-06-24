@@ -167,7 +167,7 @@ namespace TestUnitaire
             List<StatutDto> es = await service.GetStatuts();
             int id = es.Where(statut => statut.Libelle == libelle).FirstOrDefault().Id;
 
-            Offre offreTest = new Offre
+            OffreDto offreTest = new OffreDto
             {
                 Intitule = intitule,
                 StatutId = id
@@ -256,7 +256,7 @@ namespace TestUnitaire
             List<StatutDto> ss = await service.GetStatuts();
             int statutId = ss.Where(sa => sa.Libelle == libelle).FirstOrDefault().Id;
 
-            Offre o = new Offre
+            OffreDto o = new OffreDto
             {
                 Intitule = intitule,
                 StatutId = statutId

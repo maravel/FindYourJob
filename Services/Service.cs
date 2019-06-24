@@ -30,13 +30,21 @@ namespace Services
         /// </summary>
         /// <param name="id">Critère identifiant</param>
         /// <returns>Liste d'<see cref="EmployeDto"/></returns>
-        public async Task<List<EmployeDto>> GetEmployes(int? id = null)
+        public async Task<List<EmployeDto>> GetEmployes(int? id = null, bool includeData = false)
         {
             try
             {
-                if (id.HasValue)
+                if (id.HasValue && includeData)
+                {
+                    return EmployeConverter.ConvertToDto(await DbContext.Employes.Include("Experiences").Include("Formations").Include("Postulations").Where(e => e.Id == id.Value).ToListAsync());
+                }
+                else if(id.HasValue)
                 {
                     return EmployeConverter.ConvertToDto(await DbContext.Employes.Where(e => e.Id == id.Value).ToListAsync());
+                }
+                else if(includeData)
+                {
+                    return EmployeConverter.ConvertToDto(await DbContext.Employes.Include("Experiences").Include("Formations").Include("Postulations").ToListAsync());
                 }
 
                 return EmployeConverter.ConvertToDto(await DbContext.Employes.ToListAsync());
@@ -134,9 +142,9 @@ namespace Services
             {
                 if (id.HasValue)
                 {
-                    return OffreConverter.ConvertToDto(await DbContext.Offres.Where(o => o.Id == id.Value).ToListAsync());
+                    return OffreConverter.ConvertToDto(await DbContext.Offres.Include("Statut").Where(o => o.Id == id.Value).ToListAsync());
                 }
-                return OffreConverter.ConvertToDto(await DbContext.Offres.ToListAsync());
+                return OffreConverter.ConvertToDto(await DbContext.Offres.Include("Statut").ToListAsync());
             }
             catch (Exception)
             {
@@ -150,7 +158,7 @@ namespace Services
         /// <param name="offre">L'offre</param>
         /// <param name="isNew">Valeur à true si création, false si modification</param>
         /// <returns>Un <see cref="Result"/> avec le type de retour</returns>
-        public async Task<Result> AddUpdateOffre(Offre offre, bool isNew)
+        public async Task<Result> AddUpdateOffre(OffreDto offre, bool isNew)
         {
             try
             {
@@ -158,7 +166,7 @@ namespace Services
 
                 if (isNew && entity == null)
                 {
-                    entity = offre;
+                    entity = OffreConverter.ConvertToEntity(offre);
                     DbContext.Offres.Add(entity);
                 }
                 else if (!isNew && entity != null)
@@ -168,7 +176,7 @@ namespace Services
                     entity.Intitule = offre.Intitule;
                     entity.Responsable = offre.Responsable;
                     entity.Salaire = offre.Salaire;
-                    entity.Statut = offre.Statut;
+                    entity.Statut = StatutConverter.ConvertToEntity(offre.Statut);
                     entity.StatutId = offre.StatutId;
                 }
                 else
@@ -250,7 +258,7 @@ namespace Services
         /// <param name="formation">La formation</param>
         /// <param name="isNew">Valeur à true si création, false si modification</param>
         /// <returns>Un <see cref="Result"/> avec le type de retour</returns>
-        public async Task<Result> AddUpdateFormation(Formation formation, bool isNew)
+        public async Task<Result> AddUpdateFormation(FormationDto formation, bool isNew)
         {
             try
             {
@@ -258,7 +266,7 @@ namespace Services
 
                 if (isNew && entity == null)
                 {
-                    entity = formation;
+                    entity = FormationConverter.ConvertToEntity(formation);
                     DbContext.Formations.Add(entity);
                 }
                 else if (!isNew && entity != null)
@@ -266,7 +274,6 @@ namespace Services
                     entity.Date = formation.Date;
                     entity.EmployeId = formation.EmployeId;
                     entity.Intitule = formation.Intitule;
-                    entity.Employe = formation.Employe;
                 }
                 else
                 {

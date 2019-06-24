@@ -33,5 +33,9 @@ namespace AppWeb.Models
         /// <summary>Responsable de l'offre</summary>
         [Display(Name = "Responsable")]
         public string Responsable { get; set; }
+
+        public StatutViewModel Statut { get; set; }
+
+        public bool isApplied { get; set; }
     }
 }

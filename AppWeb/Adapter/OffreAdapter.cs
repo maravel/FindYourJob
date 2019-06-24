@@ -54,7 +54,8 @@ namespace AppWeb.Adapter
                 Intitule = dto.Intitule,
                 Responsable = dto.Responsable,
                 Salaire = dto.Salaire,
-                StatutId = dto.StatutId
+                StatutId = dto.StatutId,
+                Statut = StatutAdapter.ConvertToViewModel(dto.Statut)                
             };
 
             return vm;

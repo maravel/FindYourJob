@@ -21,7 +21,7 @@ namespace Services
         /// </summary>
         /// <param name="id">Critère identifiant</param>
         /// <returns>Liste d'employés</returns>
-        Task<List<EmployeDto>> GetEmployes(int? id = null);
+        Task<List<EmployeDto>> GetEmployes(int? id = null, bool includeData = false);
 
         /// <summary>
         /// Crée ou modifie un employé
@@ -55,7 +55,7 @@ namespace Services
         /// <param name="offre">L'offre</param>
         /// <param name="isNew">Valeur à true si création, false si modification</param>
         /// <returns>Un <see cref="Result"/> avec le type de retour</returns>
-        Task<Result> AddUpdateOffre(Offre offre, bool isNew);
+        Task<Result> AddUpdateOffre(OffreDto offre, bool isNew);
 
         /// <summary>
         /// Supprime une offre à partir de son identifiant
@@ -83,7 +83,7 @@ namespace Services
         /// <param name="formation">La formation</param>
         /// <param name="isNew">Valeur à true si création, false si modification</param>
         /// <returns>Un <see cref="Result"/> avec le type de retour</returns>
-        Task<Result> AddUpdateFormation(Formation formation, bool isNew);
+        Task<Result> AddUpdateFormation(FormationDto formation, bool isNew);
 
         /// <summary>
         /// Supprime une formation à partir de son identifiant

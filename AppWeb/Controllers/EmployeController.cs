@@ -1,4 +1,5 @@
 ﻿using AppWeb.Adapter;
+using AppWeb.Controllers.Common;
 using AppWeb.Models;
 using Dto.Dto;
 using Services;
@@ -12,33 +13,29 @@ using System.Web.Mvc;
 
 namespace AppWeb.Controllers
 {
-    public class EmployeController : Controller
+    public class EmployeController : BaseController
     {
-        private IService service = new Service();
-        private int idUser;
-
-        public EmployeController()
-        {
-            int.TryParse(ConfigurationManager.AppSettings["connectedUser"], out int idconnected);
-            this.idUser = idconnected;
-        }
-
-
-        public async Task<ActionResult> GetOffresPostuleesAsync()
+        
+        public async Task<ActionResult> GetEmployeeViewAsync()
         {
             int.TryParse(ConfigurationManager.AppSettings["connectedUser"], out int idUser);
 
-            List<PostulationDto> postulations = await service.GetPostulations(employeId: idUser);
+            EmployeDto dto = (await service.GetEmployes(id: idUser, includeData: true)).SingleOrDefault();
 
-            // TODO : faire dans le service ?
-            List<OffreDto> offreDtos = new List<OffreDto>();
+            EmployeViewModel vm = EmployeAdapter.ConvertToViewModel(dto);
 
-            foreach (var post in postulations)
+            vm.OffresPostulees = new List<OffreViewModel>();
+
+            foreach (var postulation in vm.Postulations)
             {
-                offreDtos.AddRange(await service.GetOffres(id: post.OffreId));
-            }
-            
-            return View("ListesOffresPostulees", OffreAdapter.ConvertToViewModel(offreDtos));
+                OffreViewModel offrevm = OffreAdapter.ConvertToViewModel((await service.GetOffres(id: postulation.OffreId)).SingleOrDefault());
+                if(offrevm != null)
+                {
+                    vm.OffresPostulees.Add(offrevm);
+                }
+            }           
+
+            return View("Account", vm);
         }
 
         public async Task<ActionResult> Postuler(int idOffre)
@@ -50,11 +47,13 @@ namespace AppWeb.Controllers
                 return Json(new { error = true, message = "Offer not found" }, JsonRequestBehavior.AllowGet);
             }
 
-            PostulationDto postulation = new PostulationDto();
-            postulation.Date = DateTime.Now;
-            postulation.EmployeId = idUser;
-            postulation.OffreId = idOffre;
-            postulation.StatutId = 1;
+            PostulationDto postulation = new PostulationDto
+            {
+                Date = DateTime.Now,
+                EmployeId = idUser,
+                OffreId = idOffre,
+                StatutId = 1
+            };
 
             Result res = await service.AddUpdatePostulation(postulation, true);
 
@@ -66,6 +65,26 @@ namespace AppWeb.Controllers
             return Json(new { error = false, message = "Successful postulation" }, JsonRequestBehavior.AllowGet);
         }
 
-        
+        public async Task<ActionResult> DePostuler(int idOffre)
+        {
+
+            PostulationDto postulationdto = (await service.GetPostulations(offreId:idOffre,employeId:idUser)).SingleOrDefault();
+            
+            if (postulationdto == null)
+            {
+                return Json(new { error = true, message = "Postulation not found" }, JsonRequestBehavior.AllowGet);
+            }
+            
+            Result res = await service.RemovePostulation(idUser, idOffre);
+
+            if (res.HasError())
+            {
+                return Json(new { error = true, message = res.Error }, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(new { error = false, message = "Unapplied with success !" }, JsonRequestBehavior.AllowGet);
+        }
+
+
     }
 }

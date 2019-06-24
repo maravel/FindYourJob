@@ -53,6 +53,7 @@ namespace Services.Converter
             dto.Responsable = entity.Responsable;
             dto.Salaire = entity.Salaire;
             dto.StatutId = entity.StatutId;
+            dto.Statut = StatutConverter.ConvertToDto(entity.Statut);
             dto.Description = entity.Description;
             dto.Date = entity.Date;
 
