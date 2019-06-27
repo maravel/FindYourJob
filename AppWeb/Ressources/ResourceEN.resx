@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountInformations" xml:space="preserve">
+    <value>Account informations</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="AddExpProfile" xml:space="preserve">
+    <value>Add an experience to your profile</value>
+  </data>
+  <data name="AddFormationProfile" xml:space="preserve">
+    <value>Add a formation to your profile</value>
+  </data>
+  <data name="AlertDelete" xml:space="preserve">
+    <value>Are you sure you want to delete ?</value>
+  </data>
+  <data name="AllEmployees" xml:space="preserve">
+    <value>All the employees</value>
+  </data>
+  <data name="AllOffers" xml:space="preserve">
+    <value>All the offers</value>
+  </data>
+  <data name="Anciennete" xml:space="preserve">
+    <value>Seniority</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="Available" xml:space="preserve">
+    <value>Available on</value>
+  </data>
+  <data name="Biographie" xml:space="preserve">
+    <value>Biography</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="CreateOffer" xml:space="preserve">
+    <value>Create an offer</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="DateNaissance" xml:space="preserve">
+    <value>Birth date</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Employe" xml:space="preserve">
+    <value>Employee</value>
+  </data>
+  <data name="Experiences" xml:space="preserve">
+    <value>Experiences</value>
+  </data>
+  <data name="FIND_YOUR_JOB" xml:space="preserve">
+    <value>FIND YOUR JOB</value>
+  </data>
+  <data name="Formations" xml:space="preserve">
+    <value>Formations</value>
+  </data>
+  <data name="Informations" xml:space="preserve">
+    <value>Informations</value>
+  </data>
+  <data name="Intitule" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="JobHeApply" xml:space="preserve">
+    <value>The jobs he or she is applying for</value>
+  </data>
+  <data name="JobYouApply" xml:space="preserve">
+    <value>The jobs you are applying for</value>
+  </data>
+  <data name="Libelle" xml:space="preserve">
+    <value>Label</value>
+  </data>
+  <data name="LookingForEmployee" xml:space="preserve">
+    <value>You are looking for employees ?</value>
+  </data>
+  <data name="Nom" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="OffersNotFoundToday" xml:space="preserve">
+    <value>No offers found for today.</value>
+  </data>
+  <data name="Pages" xml:space="preserve">
+    <value>Pages</value>
+  </data>
+  <data name="PlaceHolderExp" xml:space="preserve">
+    <value>Ex: Developer iOS ...</value>
+  </data>
+  <data name="PlaceHolderJob" xml:space="preserve">
+    <value>Ex : Web developer</value>
+  </data>
+  <data name="PlaceHolderManager" xml:space="preserve">
+    <value>Ex: Microsoft ...</value>
+  </data>
+  <data name="PlaceHolderName" xml:space="preserve">
+    <value>Ex : Name or First name</value>
+  </data>
+  <data name="PlaceHolderSalary" xml:space="preserve">
+    <value>Ex: 1300</value>
+  </data>
+  <data name="PlaceHolderTitle" xml:space="preserve">
+    <value>Ex: Lead developer PHP ...</value>
+  </data>
+  <data name="PlaHolderFormation" xml:space="preserve">
+    <value>Ex: Computer science degree ...</value>
+  </data>
+  <data name="PostOffer" xml:space="preserve">
+    <value>Post your own offer.</value>
+  </data>
+  <data name="Prenom" xml:space="preserve">
+    <value>First name</value>
+  </data>
+  <data name="RecentJobs" xml:space="preserve">
+    <value>The recent jobs</value>
+  </data>
+  <data name="Responsable" xml:space="preserve">
+    <value>Manager</value>
+  </data>
+  <data name="Salaire" xml:space="preserve">
+    <value>Salary</value>
+  </data>
+  <data name="SiteDescription" xml:space="preserve">
+    <value>Internal platform to the job-sharing business</value>
+  </data>
+  <data name="TimetoCreate" xml:space="preserve">
+    <value>Maybe it's time to create your own offer.</value>
+  </data>
+  <data name="TitleLower" xml:space="preserve">
+    <value>Find your job</value>
+  </data>
+  <data name="Unapply" xml:space="preserve">
+    <value>Unapply</value>
+  </data>
+</root>

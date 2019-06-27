@@ -11,30 +11,30 @@ using System.Web.Mvc;
 namespace AppWeb.Controllers
 {
     /// <summary>
-    /// Contrôleur gérant les actions sur les formations
+    /// Contrôleur gérant les actions relatives aux expériences des employés.
     /// </summary>
-    public class FormationController : BaseController
+    public class ExperienceController : BaseController
     {
         /// <summary>
-        /// Renvoie le formulaire de creation et modification de formation
+        /// Renvoie le formulaire de creation et modification d'expérience
         /// </summary>
         /// <returns></returns>
         public ActionResult CreateView()
         {
-            FormationViewModel vm = new FormationViewModel
+            ExperienceViewModel vm = new ExperienceViewModel
             {
                 EmployeId = idUser
             };
 
-            return View("CreateFormation", vm);
+            return View("CreateExperience", vm);
         }
 
         /// <summary>
-        /// Crée une formation
+        /// Crée une expérience
         /// </summary>
-        /// <param name="vm">La nouvelle formation</param>
+        /// <param name="vm">La nouvelle expérience</param>
         /// <returns>Un json avec les erreurs si elles existent ou la vue Account</returns>
-        public async Task<ActionResult> CreateFormationAsync(FormationViewModel vm)
+        public async Task<ActionResult> CreateExperienceAsync(ExperienceViewModel vm)
         {
             if (ModelState.IsValid)
             {
@@ -48,12 +48,12 @@ namespace AppWeb.Controllers
                 if (vm.Id != 0)
                 {
                     //on modifie
-                    res = await service.AddUpdateFormation(FormationAdapter.ConvertToDto(vm), false);
+                    res = await service.AddUpdateExperience(ExperienceAdapter.ConvertToDto(vm), false);
                 }
                 else
                 {
                     // on crée
-                    res = await service.AddUpdateFormation(FormationAdapter.ConvertToDto(vm), true);
+                    res = await service.AddUpdateExperience(ExperienceAdapter.ConvertToDto(vm), true);
                 }
 
                 if (res.HasError())
@@ -64,7 +64,7 @@ namespace AppWeb.Controllers
                 return RedirectToAction("GetEmployeeViewAsync", "Employe");
             }
 
-            return View("CreateFormation", vm);
+            return View("CreateExperience", vm);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace AppWeb.Controllers
         /// <returns>Une erreur json ou la vue Account</returns>
         public async Task<ActionResult> EditViewAsync(int id)
         {
-            FormationDto dto = (await service.GetFormations(id: id)).SingleOrDefault();
+            ExperienceDto dto = (await service.GetExperiences(id: id)).SingleOrDefault();
 
             if (dto == null)
             {
@@ -88,23 +88,23 @@ namespace AppWeb.Controllers
                 return Json(new { error = true }, JsonRequestBehavior.AllowGet);
             }
 
-            FormationViewModel vm = FormationAdapter.ConvertToViewModel(dto);
+            ExperienceViewModel vm = ExperienceAdapter.ConvertToViewModel(dto);
 
-            return View("CreateFormation", vm);
+            return View("CreateExperience", vm);
         }
 
         /// <summary>
-        /// Supprime une formation à partir de son identifiant
+        /// Supprime une experience à partir de son identifiant
         /// </summary>
-        /// <param name="id">Identifiant de la formation</param>
+        /// <param name="id">Identifiant de l'experience</param>
         /// <returns>Un json avec les potentiels erreurs.</returns>
-        public async Task<ActionResult> DeleteFormationAsync(int id)
+        public async Task<ActionResult> DeleteExperienceAsync(int id)
         {
-            Result res = await service.RemoveFormation(id);
+            Result res = await service.RemoveExperience(id);
 
             if (res.HasError())
             {
-                return Json(new { error = true, message = "Impossible de supprimer la formation" }, JsonRequestBehavior.AllowGet);
+                return Json(new { error = true, message = "Impossible de supprimer l'expérience" }, JsonRequestBehavior.AllowGet);
             }
 
             return Json(new { error = false }, JsonRequestBehavior.AllowGet);

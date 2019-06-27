@@ -20,7 +20,7 @@ namespace Services.Converter
         /// <returns>La liste d'entity convertie.</returns>
         internal static List<StatutDto> ConvertToDto(List<Statut> entities)
         {
-            if(entities == null)
+            if (entities == null)
             {
                 return null;
             }
@@ -42,7 +42,7 @@ namespace Services.Converter
         /// <returns>L'entity convertit</returns>
         internal static StatutDto ConvertToDto(Statut entity)
         {
-            if(entity == null)
+            if (entity == null)
             {
                 return null;
             }

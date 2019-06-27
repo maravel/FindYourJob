@@ -1,0 +1,42 @@
+﻿@using AppWeb.Models
+@using AppWeb.Ressources;
+
+@model List<EmployeViewModel>
+
+
+<div class="pt-5 bg-dark align-items-center d-flex bg-dark">
+    <div class="container py-5 mt-3">
+        <div class="row">
+            <div class="col-md-12" style="">
+                <h3 class="mb-2 text-light"><b>@ResourceEN.AllEmployees</b></h3>
+            </div>
+            <div class="col-md-12 py-4">
+                <div class="input-group border-0">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="now-ui-icons ui-1_zoom-bold lg"></i>
+                        </span>
+                    </div>
+                    <form class="" action="@Url.Action("SearchOffre","Offre")">
+                        @Html.TextBox("searchText", null, new { style = "padding: 1.7rem;font-size: large;", @class = "form-control mx-2 form-control-lg", placeholder = ResourceEN.PlaceHolderName })
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-12 my-3">
+                <div class="list-group">
+                    @foreach (var employe in Model)
+                    {
+                        <a href="@Url.Action("GetDetailEmployeeViewAsync","Employe", new { id = employe.Id })" class="list-group-item list-group-item-action flex-column align-items-start" style="margin:3px;">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">@employe.Nom @employe.Prenom</h5> <small class="text-muted" style="font-size:1rem;">@employe.Anciennete @ResourceEN.Anciennete</small>
+                            </div>
+                            <p class="mb-1">@employe.Biographie</p> <small class="text-muted"></small>
+                        </a>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

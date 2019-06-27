@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppWeb.Ressources;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace AppWeb.Models
@@ -12,7 +13,7 @@ namespace AppWeb.Models
         public int Id { get; set; }
 
         /// <summary>Libellé d'un statut</summary>
-        [Display(Name = "Libellé")]
+        [Display(Name = "Libelle", ResourceType = typeof(ResourceEN))]
         public string Libelle { get; set; }
     }
 }

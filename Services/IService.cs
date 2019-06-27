@@ -161,7 +161,7 @@ namespace Services
         /// <param name="exp">L'expérience</param>
         /// <param name="isNew">Valeur à true si création, false si modification</param>
         /// <returns>Un <see cref="Result"/> avec le type de retour</returns>
-        Task<Result> AddUpdateExperience(Experience exp, bool isNew);
+        Task<Result> AddUpdateExperience(ExperienceDto exp, bool isNew);
 
         /// <summary>
         /// Supprime une expérience à partir de son identifiant

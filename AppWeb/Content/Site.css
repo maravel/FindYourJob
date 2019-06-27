@@ -3,3 +3,14 @@ html {
     font-size:100%;
 }
 
+select option {
+    background-color: #2c2c2c;
+    padding:5px;
+    border:0px solid;
+}
+
+select option:hover {
+    background-color: #2c2c2c;
+    padding: 5px;
+    border: 0px solid;
+}

@@ -1,4 +1,5 @@
 ﻿@using AppWeb.Models
+@using AppWeb.Ressources
 
 @model OffreViewModel
 
@@ -8,74 +9,85 @@
         <div class="row">
             @using (Html.BeginForm("CreateOfferAsync", "Offre", null, FormMethod.Post, new { @style = "width:75%;" }))
             {
-            <div class="">
-                <h1 class="display-3 mb-4">Create an offer</h1>
+                <div class="">
+                    <h1 class="display-3 mb-4">@ResourceEN.CreateOffer</h1>
 
-                <div class="form-group">
-                    <label>@Html.DisplayNameFor(m => m.Intitule)</label>
-                    <div class="input-group border-0">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">
-                                <i class="now-ui-icons shopping_tag-content lg"></i>
-                            </span>
+                    <div class="form-group">
+                        <label>@Html.DisplayNameFor(m => m.Intitule)</label>
+                        <div class="input-group border-0">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="now-ui-icons shopping_tag-content lg"></i>
+                                </span>
+                            </div>
+                            @Html.TextBoxFor(m => m.Intitule, new { @class = "form-control", placeholder = ResourceEN.PlaceHolderTitle })
                         </div>
-                        @Html.TextBoxFor(m => m.Intitule, new { @class = "form-control", placeholder = "Ex: Lead developer PHP ..." })
                     </div>
-                   @* <small class="form-text text-muted">We'll never share your email with anyone else.</small>*@
-                </div>
 
-                <div class="form-group">
-                    <label>@Html.DisplayNameFor(m => m.Responsable)</label>
-                    <div class="input-group border-0">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">
-                                <i class="now-ui-icons users_single-02 lg"></i>
-                            </span>
+                    <div class="form-group">
+                        <label>@Html.DisplayNameFor(m => m.Responsable)</label>
+                        <div class="input-group border-0">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="now-ui-icons users_single-02 lg"></i>
+                                </span>
+                            </div>
+                            @Html.TextBoxFor(m => m.Responsable, new { @class = "form-control", placeholder = ResourceEN.PlaceHolderManager })
                         </div>
-                        @Html.TextBoxFor(m => m.Responsable, new { @class = "form-control", placeholder = "Ex: Microsoft ..." })
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label>@Html.DisplayNameFor(m => m.Salaire)</label>
-                    <div class="input-group border-0">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">
-                                <i class="now-ui-icons business_money-coins lg"></i>
-                            </span>
+                    <div class="form-group">
+                        <label>@Html.DisplayNameFor(m => m.Salaire)</label>
+                        <div class="input-group border-0">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="now-ui-icons business_money-coins lg"></i>
+                                </span>
+                            </div>
+                            @Html.TextBoxFor(m => m.Salaire, new { @class = "form-control", type = "number", placeholder = ResourceEN.PlaceHolderSalary })
                         </div>
-                        @Html.TextBoxFor(m => m.Salaire, new { @class = "form-control", type = "number", placeholder = "Ex: 1300" })
                     </div>
-                </div>
 
 
-                <div class="form-group">
-                    <label>@Html.DisplayNameFor(m => m.Date)</label>
-                    <div class="input-group border-0">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">
-                                <i class="now-ui-icons ui-1_calendar-60 lg"></i>
-                            </span>
+                    <div class="form-group">
+                        <label>@Html.DisplayNameFor(m => m.Date)</label>
+                        <div class="input-group border-0">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="now-ui-icons ui-1_calendar-60 lg"></i>
+                                </span>
+                            </div>
+                            @Html.TextBoxFor(m => m.Date, new { @class = "form-control", type = "date" })
                         </div>
-                        @Html.TextBoxFor(m => m.Date, new { @class = "form-control", type = "date", placeholder = "Ex: 22/06/2019" })
                     </div>
-                </div>
 
-
-                <div class="form-group">
-                    <label>@Html.DisplayNameFor(m => m.Description)</label>
-                    <div class="input-group border-0">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">
-                                <i class="now-ui-icons files_paper lg"></i>
-                            </span>
+                    <div class="form-group">
+                        <label>Statut</label>
+                        <div class="input-group border-0">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="now-ui-icons location_bookmark lg"></i>
+                                </span>
+                            </div>
+                            @Html.DropDownListFor(m => m.StatutId, new SelectList(Model.Statuts, "Id", "Libelle"), new { @class = "form-control" })
                         </div>
-                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", type = "date", rows = 4, placeholder = "Ex: Nous recherchons ..." })
                     </div>
-                </div>
 
-                <button type="submit" class="btn my-3 btn-lg rounded btn-primary">Create</button>
-            </div>
+
+                    <div class="form-group">
+                        <label>@Html.DisplayNameFor(m => m.Description)</label>
+                        <div class="input-group border-0">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="now-ui-icons files_paper lg"></i>
+                                </span>
+                            </div>
+                            @Html.TextAreaFor(m => m.Description, new { @class = "form-control", type = "date", rows = 4 })
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn my-3 btn-lg rounded btn-primary">@ResourceEN.Create</button>
+                </div>
             }
         </div>
     </div>

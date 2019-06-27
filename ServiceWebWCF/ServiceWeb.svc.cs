@@ -64,14 +64,14 @@ namespace ServiceWebWCF
             try
             {
                 OffreDto offre = (await service.GetOffres(id: idOffre)).SingleOrDefault();
-                Employe employe = (await service.GetEmployes(id: idEmploye)).SingleOrDefault();
+                EmployeDto employe = (await service.GetEmployes(id: idEmploye)).SingleOrDefault();
 
-                if(offre == null || employe == null)
+                if (offre == null || employe == null)
                 {
                     return "Offre ou employé non trouvé";
                 }
 
-                Postulation postulation = new Postulation();
+                PostulationDto postulation = new PostulationDto();
                 postulation.EmployeId = employe.Id;
                 postulation.OffreId = offre.Id;
                 postulation.Date = DateTime.Now;
@@ -79,7 +79,7 @@ namespace ServiceWebWCF
 
                 Result res = await service.AddUpdatePostulation(postulation, true);
 
-                if(res.HasError())
+                if (res.HasError())
                 {
                     return "Echec postulation";
                 }

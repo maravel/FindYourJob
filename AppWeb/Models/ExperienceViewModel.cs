@@ -1,9 +1,10 @@
-﻿using System;
+﻿using AppWeb.Ressources;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace AppWeb.Models
 {
-    /// <summary>Entité représentant une expérience</summary>
+    /// <summary>Classe d'affichage représentant une expérience</summary>
     public class ExperienceViewModel
     {
         /// <summary>Identifiant (primary key)</summary>
@@ -13,15 +14,15 @@ namespace AppWeb.Models
         public int EmployeId { get; set; }
 
         /// <summary>Intitulé d'une expérience</summary>
-        [Display(Name = "Intitulé")]
+        [Display(Name = "Intitule", ResourceType = typeof(ResourceEN))]
         public string Intitule { get; set; }
 
         /// <summary>Date d'une expérience</summary>
-        [Display(Name = "Date")]
+        [Display(Name = "Date", ResourceType = typeof(ResourceEN))]
         public DateTime Date { get; set; }
 
         /// <summary>L'<see cref="Employe"/> ayant acquis cette expérience</summary>
-        [Display(Name = "Employé")]
+        [Display(Name = "Employe", ResourceType = typeof(ResourceEN))]
         public EmployeViewModel Employe { get; set; }
     }
 }

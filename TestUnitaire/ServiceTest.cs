@@ -335,7 +335,7 @@ namespace TestUnitaire
             List<EmployeDto> es = await service.GetEmployes();
             int id = es.Where(employe => employe.Nom == nomEmploye).FirstOrDefault().Id;
 
-            Experience exp = new Experience
+            ExperienceDto exp = new ExperienceDto
             {
                 Intitule = intitule,
                 EmployeId = id

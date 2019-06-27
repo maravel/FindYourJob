@@ -1,4 +1,5 @@
 ﻿@using AppWeb.Models
+@using AppWeb.Ressources
 
 @model List<OffreViewModel>
 
@@ -7,11 +8,11 @@
         <div class="row my-auto">
             <div class="col-md-12 text-white">
                 <img class="mb-5" src="./Assets/Images/now-logo.png" width="100">
-                <h1 class="mb-3 display-1">FIND YOUR JOB</h1>
+                <h1 class="mb-3 display-1">@ResourceEN.FIND_YOUR_JOB</h1>
                 <h3 class="mb-5">Find the job that suits you best</h3>
                 <form class="form-inline justify-content-center" action="@Url.Action("SearchOffre","Offre")">
                     <div class="form-group">
-                        @Html.TextBox("searchText", null, new { style = "padding: 1.7rem;font-size: large;", @class = "form-control mx-2 form-control-lg", placeholder = "Ex : Web developer" })
+                        @Html.TextBox("searchText", null, new { style = "padding: 1.7rem;font-size: large;", @class = "form-control mx-2 form-control-lg", placeholder = ResourceEN.PlaceHolderJob })
                     </div>
                     <button type="submit" class="btn btn-primary" style="font-size:1.2rem;padding: 1rem;border-radius: 3rem;"><i class="fa fa-search"></i></button>
                 </form>
@@ -25,7 +26,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="mb-2"><b>The recent jobs</b></h3>
+                <h3 class="mb-2"><b>@ResourceEN.RecentJobs</b></h3>
             </div>
         </div>
         @if (Model.Any())
@@ -36,10 +37,10 @@
         {
             <div class="row py-5" id="pro">
                 <div class="col-md-8 mx-auto text-center">
-                    <h2 class="mb-4">No offers found for today.</h2>
-                    <p class="lead mb-5">Maybe it's time to create your own offer.</p>
+                    <h2 class="mb-4">@ResourceEN.OffersNotFoundToday</h2>
+                    <p class="lead mb-5">@ResourceEN.TimetoCreate</p>
                     <a class="btn btn-primary mr-1 rounded btn-lg text-light" href="@Url.Action("CreateOfferView","Offre")">
-                        <i class="now-ui-icons ui-1_simple-add mr-1"></i> Create an offer
+                        <i class="now-ui-icons ui-1_simple-add mr-1"></i> @ResourceEN.CreateOffer
                     </a>
                 </div>
             </div>
@@ -51,10 +52,10 @@
     <div class="container">
         <div class="row py-5">
             <div class="col-md-8 mx-auto text-center">
-                <h2 class="mb-4"> You are looking for employees ? </h2>
-                <p class="lead mb-5">Post you own offer.</p>
+                <h2 class="mb-4"> @ResourceEN.LookingForEmployee </h2>
+                <p class="lead mb-5">@ResourceEN.PostOffer</p>
                 <a class="btn btn-light mr-1 rounded btn-lg text-primary" href="@Url.Action("CreateOfferView","Offre")">
-                    <i class="now-ui-icons ui-1_simple-add mr-1"></i> Create an offer
+                    <i class="now-ui-icons ui-1_simple-add mr-1"></i> @ResourceEN.CreateOffer
                 </a>
             </div>
         </div>

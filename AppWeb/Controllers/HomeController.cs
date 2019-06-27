@@ -2,18 +2,22 @@
 using AppWeb.Controllers.Common;
 using AppWeb.Models;
 using Dto.Dto;
-using Services;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace AppWeb.Controllers
 {
+    /// <summary>
+    /// Contrôleur gérant la page d'accueil.
+    /// </summary>
     public class HomeController : BaseController
     {
+        /// <summary>
+        /// Renvoie la vue Index avec les offres récentes
+        /// </summary>
+        /// <returns>Vue Index</returns>
         public async Task<ActionResult> Index()
         {
             // retourne les 9 plus récentes offres
@@ -22,20 +26,6 @@ namespace AppWeb.Controllers
             List<OffreViewModel> vms = OffreAdapter.ConvertToViewModel(offres);
             
             return View(vms);
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
         }
     }
 }

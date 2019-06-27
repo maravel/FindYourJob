@@ -1,15 +1,17 @@
-﻿<div class="container">
+﻿@using AppWeb.Ressources
+
+<div class="container">
     <div class="row">
         <div class="p-4 col-md-3">
-            <h2 class="mb-4">Find your job</h2>
-            <p>Internal platform to the job-sharing business</p>
+            <h2 class="mb-4">@ResourceEN.TitleLower</h2>
+            <p>@ResourceEN.SiteDescription</p>
         </div>
         <div class="p-4 col-md-3">
-            <h2 class="mb-4">Pages</h2>
+            <h2 class="mb-4">@ResourceEN.Pages</h2>
             <ul class="list-unstyled">
                 <li><a href="@Url.Action("Index", "Home")" class="text-light">Home</a> <br> </li>
                 <li><a href="@Url.Action("LitesOffresAsync","Offre")" class="text-light">Offers</a> <br> </li>
-                <li><a href="#" class="text-light">Our services</a><br></li>
+                <li><a href="@Url.Action("GetListEmployeesViewAsync","Employe")" class="text-light">Employees</a><br></li>
                 <li><a href="@Url.Action("GetEmployeeViewAsync","Employe")" class="text-light">Account</a></li>
             </ul>
         </div>
@@ -34,13 +36,13 @@
         <div class="p-4 col-md-3">
             <h2 class="mb-4">Feedback</h2>
             <form>
-                <fieldset class="form-group"> <label for="exampleInputEmail1">Send us feedback</label> <input type="email" class="form-control" placeholder="Ex : Great job ..."> </fieldset> <button type="submit" class="btn btn-outline-dark">Submit</button>
+                <fieldset class="form-group"> <label for="exampleInputEmail1">Send us feedback</label> <input type="text" class="form-control" placeholder="Ex : Great job ..."> </fieldset> <button type="submit" class="btn btn-outline-dark">Submit</button>
             </form>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12 mt-3">
-            <p class="text-center">Site développé par Mathieu RAVEL et Bernardo PEREIRA AUGUSTO.</p>
+            <p class="text-center">Website developed by Mathieu RAVEL and Bernardo PEREIRA AUGUSTO.</p>
         </div>
     </div>
 </div>

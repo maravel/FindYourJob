@@ -1,17 +1,15 @@
 ﻿@using AppWeb.Models
 @using AppWeb.Ressources;
 
-@model FormationViewModel
-
-
+@model ExperienceViewModel
 
 <div class="pt-5 bg-dark align-items-center d-flex bg-dark">
     <div class="container py-5 my-5">
         <div class="row">
-            @using (Html.BeginForm("CreateFormationAsync", "Formation", new AjaxOptions { OnSuccess = "onSuccess" }, FormMethod.Post, new { @style = "width:75%;" }))
+            @using (Html.BeginForm("CreateExperienceAsync", "Experience", new AjaxOptions { OnSuccess = "onSuccess" }, FormMethod.Post, new { @style = "width:75%;" }))
             {
-                <div class="">
-                    <h3 class="display-4 mb-4">@ResourceEN.AddFormationProfile</h3>
+                <div>
+                    <h3 class="display-4 mb-4">@ResourceEN.AddExpProfile</h3>
                     @Html.HiddenFor(m => m.Id)
                     @Html.HiddenFor(m => m.EmployeId)
                     <div class="form-group">
@@ -22,7 +20,7 @@
                                     <i class="now-ui-icons shopping_tag-content lg"></i>
                                 </span>
                             </div>
-                            @Html.TextBoxFor(m => m.Intitule, new { @class = "form-control", placeholder = ResourceEN.PlaHolderFormation })
+                            @Html.TextBoxFor(m => m.Intitule, new { @class = "form-control", placeholder = ResourceEN.PlaceHolderExp })
                         </div>
                     </div>
 

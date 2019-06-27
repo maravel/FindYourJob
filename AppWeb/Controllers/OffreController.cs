@@ -3,11 +3,9 @@ using AppWeb.Controllers.Common;
 using AppWeb.Models;
 using Dto.Dto;
 using Services;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace AppWeb.Controllers
@@ -43,13 +41,13 @@ namespace AppWeb.Controllers
 
             List<PostulationDto> posts = await service.GetPostulations(offreId: id, employeId: idUser);
 
-            if(posts?.Any() ?? false)
+            if (posts?.Any() ?? false)
             {
-                vm.isApplied = false;
+                vm.isApplied = true;
             }
             else
             {
-                vm.isApplied = true;
+                vm.isApplied = false;
             }
 
             return View("DetailOffre", vm);
@@ -75,9 +73,15 @@ namespace AppWeb.Controllers
         /// Renvoie la vue de creation d'offre
         /// </summary>
         /// <returns>Vue CreateOffre</returns>
-        public ActionResult CreateOfferView()
+        public async Task<ActionResult> CreateOfferView()
         {
-            return View("CreateOffre", new OffreViewModel());
+            OffreViewModel vm = new OffreViewModel();
+
+            List<StatutDto> statuts = await service.GetStatuts();
+
+            vm.Statuts = StatutAdapter.ConvertToViewModel(statuts);
+
+            return View("CreateOffre", vm);
         }
 
         /// <summary>
@@ -87,19 +91,23 @@ namespace AppWeb.Controllers
         /// <returns>La liste des offres</returns>
         public async Task<ActionResult> CreateOfferAsync(OffreViewModel vm)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 vm.StatutId = 1;
                 OffreDto dto = OffreAdapter.ConvertToDto(vm);
                 Result res = await service.AddUpdateOffre(dto, true);
 
-                if(res.HasError())
+                if (res.HasError())
                 {
                     return View("CreateOffre", vm);
                 }
 
                 return await LitesOffresAsync();
             }
+
+            List<StatutDto> statuts = await service.GetStatuts();
+
+            vm.Statuts = StatutAdapter.ConvertToViewModel(statuts);
 
             return View("CreateOffre", vm);
         }

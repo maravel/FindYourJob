@@ -38,11 +38,11 @@ namespace Services
                 {
                     return EmployeConverter.ConvertToDto(await DbContext.Employes.Include("Experiences").Include("Formations").Include("Postulations").Where(e => e.Id == id.Value).ToListAsync());
                 }
-                else if(id.HasValue)
+                else if (id.HasValue)
                 {
                     return EmployeConverter.ConvertToDto(await DbContext.Employes.Where(e => e.Id == id.Value).ToListAsync());
                 }
-                else if(includeData)
+                else if (includeData)
                 {
                     return EmployeConverter.ConvertToDto(await DbContext.Employes.Include("Experiences").Include("Formations").Include("Postulations").ToListAsync());
                 }
@@ -67,12 +67,12 @@ namespace Services
             {
                 Employe entity = await DbContext.Employes.Where(e => e.Id == employe.Id).SingleOrDefaultAsync();
 
-                if(isNew && entity == null)
+                if (isNew && entity == null)
                 {
                     entity = employe;
                     DbContext.Employes.Add(entity);
                 }
-                else if(!isNew && entity != null)
+                else if (!isNew && entity != null)
                 {
                     entity.Nom = employe.Nom;
                     entity.Prenom = employe.Prenom;
@@ -82,7 +82,7 @@ namespace Services
                 }
                 else
                 {
-                    if(isNew)
+                    if (isNew)
                     {
                         return new Result(TypeRetour.Error, "Employé déjà existant.");
                     }
@@ -339,11 +339,11 @@ namespace Services
                 {
                     return PostulationConverter.ConvertToDto(await DbContext.Postulations.Where(p => p.EmployeId == employeId.Value && p.OffreId == offreId.Value).ToListAsync());
                 }
-                else if(employeId.HasValue)
+                else if (employeId.HasValue)
                 {
                     return PostulationConverter.ConvertToDto(await DbContext.Postulations.Where(p => p.EmployeId == employeId.Value).ToListAsync());
                 }
-                else if(offreId.HasValue)
+                else if (offreId.HasValue)
                 {
                     return PostulationConverter.ConvertToDto(await DbContext.Postulations.Where(p => p.OffreId == offreId.Value).ToListAsync());
                 }
@@ -470,7 +470,6 @@ namespace Services
                 else if (!isNew && entity != null)
                 {
                     entity.Libelle = statut.Libelle;
-                    entity.Offres = statut.Offres;
                 }
                 else
                 {
@@ -551,7 +550,7 @@ namespace Services
         /// <param name="exp">L'expérience</param>
         /// <param name="isNew">Valeur à true si création, false si modification</param>
         /// <returns>Un <see cref="Result"/> avec le type de retour</returns>
-        public async Task<Result> AddUpdateExperience(Experience exp, bool isNew)
+        public async Task<Result> AddUpdateExperience(ExperienceDto exp, bool isNew)
         {
             try
             {
@@ -559,12 +558,12 @@ namespace Services
 
                 if (isNew && entity == null)
                 {
-                    entity = exp;
+                    entity = ExperienceConverter.ConvertToEntity(exp);
                     DbContext.Experiences.Add(entity);
                 }
                 else if (!isNew && entity != null)
                 {
-                    entity.Intitule = exp.Intitule;
+                    entity = ExperienceConverter.ConvertToEntity(exp);
                 }
                 else
                 {

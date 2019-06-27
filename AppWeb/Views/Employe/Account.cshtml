@@ -1,4 +1,5 @@
 ﻿@using AppWeb.Models
+@using AppWeb.Ressources;
 
 @model EmployeViewModel
 
@@ -7,18 +8,18 @@
     <div class="container py-5 mt-3">
         <div class="row">
             <div class="col-md-12" style="">
-                <h3 class="mb-2 text-light"><b>Account informations</b></h3>
+                <h3 class="mb-2 text-light"><b>@ResourceEN.AccountInformations</b></h3>
             </div>
             <div class="col-md-8 px-md-5">
                 <div class="p-4 col-md-12" style="font-size:1rem;">
                     <p>
-                        <i class="now-ui-icons business_badge mr-3 d-inline text-muted"></i>Name : @Model.Prenom @Model.Nom
+                        <i class="now-ui-icons business_badge mr-3 d-inline text-muted"></i>@ResourceEN.Nom : @Model.Prenom @Model.Nom
                     </p>
                     <p>
-                        <i class="now-ui-icons ui-1_calendar-60 d-inline mr-3 text-muted"></i>Birth date : @Model.DateNaissance.ToString("dd/MM/yyyy")
+                        <i class="now-ui-icons ui-1_calendar-60 d-inline mr-3 text-muted"></i>@ResourceEN.DateNaissance : @Model.DateNaissance.ToString("dd/MM/yyyy")
                     </p>
                     <p>
-                        <i class="now-ui-icons files_paper d-inline mr-3 text-muted"></i>Biography : @Model.Biographie
+                        <i class="now-ui-icons files_paper d-inline mr-3 text-muted"></i>@ResourceEN.Biographie : @Model.Biographie
                     </p>
                 </div>
             </div>
@@ -32,7 +33,7 @@
     <div class="container">
         <div class="row my-3">
             <div class="col-md-12">
-                <h3 class="mb-2 text-light"><b>Formations</b></h3>
+                <h3 class="mb-2 text-light"><b>@ResourceEN.Formations</b></h3>
             </div>
         </div>
         <div class="row">
@@ -44,17 +45,57 @@
                             <h5 class="card-title"><b>@formation.Intitule</b></h5>
                             <h6 class="card-subtitle my-2 text-muted">@formation.Date.ToString("dd/MM/yyyy")</h6>
                             @*<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>*@
-                            <a href="@Url.Action("EditViewAsync","Formation", new { id = formation.Id })" class="card-link">Modifier</a>
-                            <a style="cursor:pointer" onclick="supprimer_formation(@formation.Id)" class="card-link text-primary">Supprimer</a>
+                            <a href="@Url.Action("EditViewAsync","Formation", new { id = formation.Id })" class="card-link">@ResourceEN.Edit</a>
+                            <a style="cursor:pointer" onclick="supprimer_formation(@formation.Id)" class="card-link text-primary">@ResourceEN.Delete</a>
                         </div>
                     </div>
                 </div>
             }
-            <div class="col-lg-4 p-3 col-md-6 cards">
-                <div class="card text-center" style="opacity:0.3">
-                    <a href="@Url.Action("CreateView","Formation")" style="border-color: transparent;" class="btn btn-primary p-5 btn-outline-secondary card-body"><i class="now-ui-icons ui-1_simple-add"></i></a>
+
+            @if (Model.IsConnectedUser)
+            {
+                <div class="col-lg-4 p-3 col-md-6 cards">
+                    <div class="card text-center" style="opacity:0.3">
+                        <a href="@Url.Action("CreateView","Formation")" style="border-color: transparent;" class="btn btn-primary p-5 btn-outline-secondary card-body"><i class="now-ui-icons ui-1_simple-add"></i></a>
+                    </div>
                 </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+<div class="py-5 bg-dark text-dark">
+    <div class="container">
+        <div class="row my-3">
+            <div class="col-md-12">
+                <h3 class="mb-2 text-light"><b>@ResourceEN.Experiences</b></h3>
             </div>
+        </div>
+        <div class="row">
+            @foreach (var exp in Model.Experiences)
+            {
+                <div class="col-lg-4 p-3 col-md-6 cards">
+                    <div class="card">
+                        <div class="card-body  bg-light">
+                            <h5 class="card-title"><b>@exp.Intitule</b></h5>
+                            <h6 class="card-subtitle my-2 text-muted">@exp.Date.ToString("dd/MM/yyyy")</h6>
+                            @*<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>*@
+                            <a href="@Url.Action("EditViewAsync","Experience", new { id = exp.Id })" class="card-link">@ResourceEN.Edit</a>
+                            <a style="cursor:pointer" onclick="supprimer_formation(@exp.Id)" class="card-link text-primary">@ResourceEN.Delete</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @if (Model.IsConnectedUser)
+            {
+                <div class="col-lg-4 p-3 col-md-6 cards">
+                    <div class="card text-center" style="opacity:0.3">
+                        <a href="@Url.Action("CreateView","Experience")" style="border-color: transparent;" class="btn btn-primary p-5 btn-outline-secondary card-body"><i class="now-ui-icons ui-1_simple-add"></i></a>
+                    </div>
+                </div>
+            }
         </div>
     </div>
 </div>
@@ -64,7 +105,14 @@
     <div class="container my-5">
         <div class="row">
             <div class="col-md-12" style="">
-                <h3 class="mb-2 text-light"><b>The jobs you are applying for</b></h3>
+                @if (Model.IsConnectedUser)
+                {
+                    <h3 class="mb-2 text-light"><b>@ResourceEN.JobYouApply</b></h3>
+                }
+                else
+                {
+                    <h3 class="mb-2 text-light"><b>@ResourceEN.JobHeApply</b></h3>
+                }
             </div>
         </div>
         @Html.Partial("_listeOffres", Model.OffresPostulees)
@@ -74,7 +122,7 @@
 <script>
 
     function supprimer_formation(id) {
-        show_modal_action("Are you sure you want to delete ?", deleteformation, id);
+        show_modal_action('@ResourceEN.AlertDelete', deleteformation, id);
     }
 
     function deleteformation(id) {

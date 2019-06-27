@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppWeb.Ressources;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,6 +7,9 @@ using System.Web;
 
 namespace AppWeb.Models
 {
+    /// <summary>
+    /// Classe d'affichage représentant une postulation.
+    /// </summary>
     public class PostulationViewModel
     {
         /// <summary>L'id d'une <see cref="Offre"/> (primary key)</summary>
@@ -15,7 +19,7 @@ namespace AppWeb.Models
         public int EmployeId { get; set; }
 
         /// <summary>Date de la postulation</summary>
-        [Display(Name = "Date")]
+        [Display(Name = "Date", ResourceType = typeof(ResourceEN))]
         public DateTime Date { get; set; }
 
         /// <summary>Identitidant du statut de la postulation</summary>

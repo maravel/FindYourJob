@@ -6,7 +6,7 @@
                     <i class="now-ui-icons ui-1_bell-53 text-primary x2"></i>
                 </button>
                 <p id="message_modal" class="m-4"></p>
-                <button id="button_ok" type="button" class="btn btn-primary no-display mr-3">YES</button>
+                <button id="button_ok" type="button" class="btn btn-primary mr-3" style="display:none;">YES</button>
                 <button type="button" class="btn btn-primary ml-3" data-dismiss="modal"> CLOSE </button>
             </div>
         </div>
@@ -16,7 +16,7 @@
 <script>
 
     function show_modal(title) {
-        $("#button_ok").addClass("no-display");
+        $("#button_ok").hide();
 
         $("#modal2").find("#message_modal").html(title);
 
@@ -24,7 +24,7 @@
     }
 
     function show_modal_action(title, action, id) {
-        $("#button_ok").removeClass("no-display");
+        $("#button_ok").show();
 
         $("#modal2").find("#message_modal").html(title);
 

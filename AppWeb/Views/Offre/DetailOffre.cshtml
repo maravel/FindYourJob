@@ -1,4 +1,5 @@
 ﻿@using AppWeb.Models
+@using AppWeb.Ressources
 
 @model OffreViewModel
 
@@ -7,12 +8,12 @@
         <div class="row">
             <div class="col-md-8 px-md-5">
                 <h1 class="display-4 mb-4">@Model.Intitule</h1>
-                <p class="lead mb-4">@Model.Description</p> 
-                
+                <p class="lead mb-4">@Model.Description</p>
+
                 <div class="p-4 col-md-12" style="font-size:1rem;">
-                    <h2 class="mb-4">Informations</h2>
+                    <h2 class="mb-4">@ResourceEN.Informations</h2>
                     <p>
-                        <i class="now-ui-icons ui-1_calendar-60  mr-3 d-inline text-muted"></i>Available on @Model.Date.ToString("dd/MM/yyyy")
+                        <i class="now-ui-icons ui-1_calendar-60  mr-3 d-inline text-muted"></i>@ResourceEN.Available @Model.Date.ToString("dd/MM/yyyy")
                     </p>
                     <p>
                         <i class="now-ui-icons d-inline mr-3 text-muted objects_diamond"></i>@Model.Salaire €
@@ -29,12 +30,15 @@
                 <div class="card-body p-4 text-center">
                     @if (Model.isApplied)
                     {
-                        <button onclick="postuler('@Model.Id')" class="btn btn-lg btn-primary">Apply</button>
+                        <button id="buttonApply" style="display:none;" onclick="postuler('@Model.Id')" class="btn btn-lg btn-primary">@ResourceEN.Apply</button>
+                        <button id="buttonUnapply" onclick="depostuler('@Model.Id')" class="btn btn-lg btn-secondary">@ResourceEN.Unapply</button>
                     }
                     else
                     {
-                        <button onclick="depostuler('@Model.Id')" class="btn btn-lg btn-secondary">Unapply</button>
+                        <button id="buttonApply" onclick="postuler('@Model.Id')" class="btn btn-lg btn-primary">@ResourceEN.Apply</button>
+                        <button id="buttonUnapply" style="display:none;" onclick="depostuler('@Model.Id')" class="btn btn-lg btn-secondary">@ResourceEN.Unapply</button>
                     }
+
                 </div>
             </div>
         </div>
@@ -52,6 +56,10 @@
             data: { idOffre: id },
             success: function (data) {
                 show_modal(data.message);
+                if (!data.error) {
+                    $("#buttonUnapply").show();
+                    $("#buttonApply").hide();
+                }
             }
         });
     }
@@ -63,6 +71,10 @@
             data: { idOffre: id },
             success: function (data) {
                 show_modal(data.message);
+                if (!data.error) {
+                    $("#buttonApply").show();
+                    $("#buttonUnapply").hide();
+                }
             }
         });
     }

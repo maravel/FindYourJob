@@ -19,7 +19,7 @@ namespace AppWeb.Adapter
         /// <returns>La liste de ViewModel convertie.</returns>
         internal static List<FormationViewModel> ConvertToViewModel(List<FormationDto> dtos)
         {
-            if(dtos == null)
+            if (dtos == null)
             {
                 return null;
             }
@@ -41,7 +41,7 @@ namespace AppWeb.Adapter
         /// <returns>Le ViewModel convertit</returns>
         internal static FormationViewModel ConvertToViewModel(FormationDto dto)
         {
-            if(dto == null)
+            if (dto == null)
             {
                 return null;
             }
