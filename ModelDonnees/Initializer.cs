@@ -12,8 +12,9 @@ namespace ModelDonnees
     {
         protected override void Seed(ContextDA context)
         {
-            List<Statut> statuts = new List<Statut>();
-            statuts.Add(new Statut() { Libelle = "Disponible" });
+            context.Statuts.Add(new Statut() { Libelle = "Disponible" });
+            context.Offres.Add(new Offre() { Intitule = "Offre" });
+
 
             base.Seed(context);
         }
