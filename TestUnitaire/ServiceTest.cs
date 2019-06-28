@@ -38,6 +38,9 @@ namespace TestUnitaire
             Assert.IsFalse(res.HasError());
             Assert.AreEqual(nb, employes.Count - 1);
 
+            // Arrange
+            await service.RemoveEmploye(employetest.Id);
+
         }
 
         [TestMethod]
@@ -66,6 +69,9 @@ namespace TestUnitaire
             Assert.IsFalse(res.HasError());
             Assert.AreEqual(newNom, employe.Nom);
 
+            // Arrange
+            await service.RemoveEmploye(employetest.Id);
+
         }
 
         [TestMethod]
@@ -90,6 +96,10 @@ namespace TestUnitaire
 
             // Assert
             Assert.AreEqual(defaultCount, employes.Count - 1);
+
+            // Arrange
+            await service.RemoveEmploye(employetest.Id);
+
         }
 
         [TestMethod]
@@ -112,6 +122,9 @@ namespace TestUnitaire
 
             // Assert
             Assert.AreEqual(employe.Nom, employetest.Nom);
+
+            // Arrange
+            await service.RemoveEmploye(employetest.Id);
 
         }
 
@@ -178,6 +191,9 @@ namespace TestUnitaire
             // Assert
             Assert.IsTrue(nb >= 1);
             Assert.IsFalse(res.HasError());
+
+            // Arrange
+            await service.RemoveOffre(offreTest.Id);
         }
 
         #endregion
@@ -217,6 +233,9 @@ namespace TestUnitaire
             // Assert
             Assert.IsTrue(nb >= 1);
             Assert.IsFalse(res.HasError());
+
+            // Arrange
+            await service.RemoveFormation(formationTest.Id);
         }
 
         #endregion
@@ -230,7 +249,6 @@ namespace TestUnitaire
 
             // Arrange
             string libelle = "StatutTest";
-            int statut = 0;
             string nomEmploye = "MathieuTest";
             string intitule = "OffreTest";
 
@@ -273,7 +291,7 @@ namespace TestUnitaire
             Result res = await service.AddUpdatePostulation(postulationTest, true);
 
             List<PostulationDto> postulations = await service.GetPostulations();
-            int nb = postulations.Where(p => p.StatutId == statut).Count();
+            int nb = postulations.Where(p => p.StatutId == statutId).Count();
 
             await service.RemoveEmploye(employeId);
             await service.RemoveOffre(offreId);
@@ -282,6 +300,9 @@ namespace TestUnitaire
             // Assert
             Assert.IsTrue(nb >= 1);
             Assert.IsFalse(res.HasError());
+
+            // Arrange
+            await service.RemovePostulation(postulationTest.EmployeId, postulationTest.OffreId);
         }
 
         #endregion
@@ -310,6 +331,9 @@ namespace TestUnitaire
             // Assert
             Assert.IsFalse(res.HasError());
             Assert.AreEqual(nb, statuts.Count - 1);
+
+            // Arrange
+            await service.RemoveStatut(statutTest.Id);
 
         }
 
@@ -350,6 +374,10 @@ namespace TestUnitaire
             // Assert
             Assert.IsTrue(nb >= 1);
             Assert.IsFalse(res.HasError());
+
+            // Arrange
+            await service.RemoveExperience(exp.Id);
+
         }
 
         #endregion

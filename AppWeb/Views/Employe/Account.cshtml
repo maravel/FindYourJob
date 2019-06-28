@@ -127,7 +127,7 @@
 
     function deleteformation(id) {
         alert("on supprime " + id);
-        @*$.ajax({
+        $.ajax({
             url: "@Url.Action("DeleteFormationAsync", "Formation")",
             type: "POST",
             data: { id: id },
@@ -136,7 +136,7 @@
                     show_modal(data.message);
                 }
             }
-        });*@
+        });
     }
 
 </script>
